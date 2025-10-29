@@ -19,3 +19,8 @@ build-backend = "pdm.backend"
 
 [tool.pdm]
 distribution = true
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+]
