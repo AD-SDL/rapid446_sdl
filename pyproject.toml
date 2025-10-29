@@ -1,0 +1,21 @@
+[project]
+name = "rapid446_sdl"
+version = "0.1.0"
+description = "The Robotic Autonomous Platform for Innovation and Discovery in ANL's Building 446"
+authors = [
+    {name = "Ryan D. Lewis", email = "ryan.lewis@anl.gov"},
+    {name = "Abraham Stroka", email = "astroka@anl.gov"},
+    {name = "Casey Stone", email = "cstone@anl.gov"},
+]
+dependencies = ["madsci-common~=0.5.0", "madsci-client~=0.5.0"]
+requires-python = ">=3.9.1"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true

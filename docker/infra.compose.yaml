@@ -1,0 +1,29 @@
+services:
+  # * Databases and infra
+  rapid446_mongodb:
+    container_name: rapid446_mongodb
+    image: mongo:8.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci/mongodb:/data/db
+  rapid446_redis:
+    container_name: rapid446_redis
+    image: redis:7.4
+    ports:
+      - 6379:6379
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci/redis:/data
+    command: redis-server --appendonly yes --save 900 1 --save 300 10 --save 60 10000 --requirepass "${WORKCELL_REDIS_PASSWORD}"
+  rapid446_postgres:
+    container_name: rapid446_postgres
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=madsci
+      - POSTGRES_PASSWORD=${WORKCELL_REDIS_PASSWORD}
+      - POSTGRES_DB=resources
+    ports:
+      - 5432:5432
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci/postgres:/var/lib/postgresql/data
+
