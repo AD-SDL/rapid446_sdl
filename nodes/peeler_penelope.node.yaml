@@ -1,0 +1,7 @@
+node_name: peeler_penelope
+node_id: 01K9ZQQWPFYTH8W1BHEESA2VN7
+node_description: The Brooks Xpeel Peeler in RAPID 446
+node_type: device
+module_name: brooks_xpeel_module
+module_version: 1.1.0
+capabilities: null

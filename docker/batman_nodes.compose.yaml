@@ -1,0 +1,46 @@
+x-service-template: &service-template
+  env_file: ../.env
+  network_mode: host
+  volumes:
+    - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci:/home/madsci/.madsci/
+    - ${LOCAL_WORKSPACE_FOLDER:-../}nodes:/home/madsci/nodes
+  restart: unless-stopped
+
+services:
+  sealer_sassy:
+    <<: *service-template
+    container_name: sealer_sassy
+    image: ghcr.io/ad-sdl/a4s_sealer_module
+    environment:
+      - NODE_DEFINITION=/home/madsci/nodes/sealer_sassy.node.yaml
+      - NODE_DEVICE_PATH=/dev/ttyUSB0
+      - NODE_URL=http://batman.cels.anl.gov:2000/
+    build:
+      context: ../../a4s_sealer_module
+      dockerfile: Dockerfile
+    command: python /home/madsci/a4s_sealer_module/src/sealer_rest_node.py
+    privileged: true
+  pf400_piper:
+    <<: *service-template
+    container_name: pf400_piper
+    image: ghcr.io/ad-sdl/pf400_module
+    environment:
+      - NODE_PF400_IP=192.168.0.1
+      - NODE_DEFINITION=/home/madsci/nodes/pf400_piper.node.yaml
+      - NODE_URL=http://batman.cels.anl.gov:2001/
+    build:
+      context: ../../pf400_module
+      dockerfile: Dockerfile
+    command: python -m pf400_rest_node
+  peeler_penelope:
+    <<: *service-template
+    container_name: peeler_penelope
+    image: ghcr.io/ad-sdl/brooks_xpeel_module
+    environment:
+      - NODE_DEFINITION=/home/madsci/nodes/peeler_penelope.node.yaml
+      - NODE_DEVICE_PORT=/dev/ttyUSB1
+      - NODE_URL=http://batman.cels.anl.gov:2002/
+    build:
+      context: ../../brooks_xpeel_module
+      dockerfile: Dockerfile
+    privileged: true

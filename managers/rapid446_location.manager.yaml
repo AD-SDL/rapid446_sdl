@@ -2,5 +2,733 @@ name: Default LocationManager
 description: null
 manager_id: 01K8RDHTKW73346FD9Z3TPR71K
 manager_type: location_manager
-locations: []
+locations:
+- location_name: safe_home
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDH8
+  description: null
+  representations:
+    pf400_piper:
+    - 989.443
+    - -2.007
+    - 174.876
+    - 542.366
+    - 70.574
+    - -843.897
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: exchange_deck_high_narrow
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDH9
+  description: null
+  representations:
+    pf400_piper:
+    - 638.532
+    - -19.079
+    - 65.561
+    - 732.286
+    - 78.587
+    - 752.82
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: exchange_deck_low_narrow
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHA
+  description: null
+  representations:
+    pf400_piper:
+    - 631.616
+    - -19.079
+    - 65.561
+    - 732.286
+    - 78.587
+    - 752.82
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: exchange_deck_high_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHB
+  description: null
+  representations:
+    pf400_piper:
+    - 638.243
+    - 4.798
+    - 93.345
+    - 592.047
+    - 122.134
+    - 918.216
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: exchange_deck_low_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHC
+  description: null
+  representations:
+    pf400_piper:
+    - 631.616
+    - 4.798
+    - 93.345
+    - 592.047
+    - 122.134
+    - 918.216
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_exchange
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHD
+  description: null
+  representations:
+    pf400_piper:
+    - - 767.77
+      - 0.265
+      - 175.445
+      - 540.11
+      - 70.521
+      - 543.01
+    - - 756.457
+      - 3.342
+      - 90.607
+      - 586.714
+      - 70.556
+      - 918.234
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_exchange_height
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHE
+  description: null
+  representations:
+    pf400_piper:
+    - 767.77
+    - 0.265
+    - 175.445
+    - 540.11
+    - 70.521
+    - 543.01
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_exchange_above
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHF
+  description: null
+  representations:
+    pf400_piper:
+    - 756.457
+    - 3.342
+    - 90.607
+    - 586.714
+    - 70.556
+    - 918.234
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2bioalpha_deck1_narrow
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHG
+  description: null
+  representations:
+    pf400_piper:
+    - 708.132
+    - -49.277
+    - 318.588
+    - 448.364
+    - 78.476
+    - -207.488
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2bioalpha_deck1_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHH
+  description: null
+  representations:
+    pf400_piper:
+    - 707.532
+    - -19.349
+    - 310.011
+    - 338.398
+    - 121.835
+    - -257.67
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2bioalpha_deck3_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHJ
+  description: null
+  representations:
+    pf400_piper:
+    - 707.704
+    - -23.803
+    - 261.289
+    - 391.475
+    - 121.84
+    - -255.627
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_ot2bioalpha
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHK
+  description: null
+  representations:
+    pf400_piper:
+    - 731.926
+    - 20.189
+    - 248.705
+    - 356.524
+    - 70.515
+    - -257.671
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2biobeta_deck1_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHM
+  description: null
+  representations:
+    pf400_piper:
+    - 707.171
+    - -18.952
+    - 267.011
+    - 381.434
+    - 122.04
+    - 688.614
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2biobeta_deck3_wide
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHN
+  description: null
+  representations:
+    pf400_piper:
+    - 706.99
+    - -35.793
+    - 256.701
+    - 408.513
+    - 122.046
+    - 576.262
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_ot2biobeta
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHP
+  description: null
+  representations:
+    pf400_piper:
+    - 759.713
+    - 34.877
+    - 224.99
+    - 369.217
+    - 70.539
+    - 543.724
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: otflex_deckA
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHQ
+  description: null
+  representations:
+    pf400_piper:
+    - 800.149
+    - 22.186
+    - 285.576
+    - 320.182
+    - 81.893
+    - 999.494
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: otflex_deckB
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHR
+  description: null
+  representations:
+    pf400_piper:
+    - 801.503
+    - 0.558
+    - 335.163
+    - 291.894
+    - 81.893
+    - 999.459
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_flexA
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHS
+  description: null
+  representations:
+    pf400_piper:
+    - - 787.882
+      - -2.133
+      - 175.682
+      - 542.847
+      - 78.581
+      - 999.516
+    - - 783.291
+      - 62.017
+      - 175.055
+      - 541.806
+      - 78.587
+      - 999.516
+    - - 847.175
+      - 43.612
+      - 293.056
+      - 291.411
+      - 129.971
+      - 999.494
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_flexB
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHT
+  description: null
+  representations:
+    pf400_piper:
+    - - 937.882
+      - -2.133
+      - 175.682
+      - 542.847
+      - 78.581
+      - 999.516
+    - - 937.291
+      - 62.017
+      - 175.055
+      - 541.806
+      - 78.587
+      - 999.516
+    - - 937.191
+      - 49.085
+      - 289.175
+      - 289.398
+      - 82.01
+      - 999.489
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: hidex_geraldine_high_nest
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHV
+  description: null
+  representations:
+    pf400_piper:
+    - 695.71
+    - 34.27
+    - 90.468
+    - 682.956
+    - 78.417
+    - -455.409
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: hidex_geraldine_low_nest
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHW
+  description: null
+  representations:
+    pf400_piper:
+    - 688.105
+    - 34.164
+    - 90.435
+    - 683.614
+    - 82.034
+    - -455.416
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_hidex
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHX
+  description: null
+  representations:
+    pf400_piper:
+    - 749.11
+    - -2.968
+    - 141.991
+    - 667.548
+    - 78.523
+    - -455.415
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: bio_biometra3_nest
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHY
+  description: null
+  representations:
+    pf400_piper:
+    - 778.805
+    - 22.966
+    - 104.685
+    - 679.275
+    - 125.006
+    - 397.562
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_biometra3
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDHZ
+  description: null
+  representations:
+    pf400_piper:
+    - 816.492
+    - -2.854
+    - 139.086
+    - 670.723
+    - 125.012
+    - 397.524
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: sealer_nest
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDJ0
+  description: null
+  representations:
+    pf400_piper:
+    - 584.329
+    - 13.807
+    - 270.29
+    - 344.673
+    - 80.756
+    - -917.165
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_sealer
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDJ1
+  description: null
+  representations:
+    pf400_piper:
+    - - 691.115
+      - 35.094
+      - 259.197
+      - 334.417
+      - 81.008
+      - -917.181
+    - - 650.329
+      - 13.807
+      - 270.29
+      - 344.673
+      - 80.756
+      - -917.165
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: peeler_nest
+  location_id: 01K9ZK1F917ACYTNC3Z4QXRDJ2
+  description: null
+  representations:
+    pf400_piper:
+    - 601.976
+    - -2.619
+    - 238.879
+    - 392.002
+    - 80.99
+    - -959.45
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_peeler
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J0
+  description: null
+  representations:
+    pf400_piper:
+    - 682.514
+    - 36.77
+    - 219.243
+    - 373.479
+    - 81.008
+    - -959.448
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: bmg_reader_nest
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J1
+  description: null
+  representations:
+    pf400_piper:
+    - 610.277
+    - 8.035
+    - 107.426
+    - 691.801
+    - 82.004
+    - 917.639
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_bmg
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J2
+  description: null
+  representations:
+    pf400_piper:
+    - - 749.014
+      - -1.224
+      - 175.218
+      - 542.97
+      - 82.151
+      - 702.229
+    - - 837.705
+      - 5.468
+      - 111.581
+      - 687.601
+      - 70.486
+      - 917.949
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: inheco_devID2_floor0_nest
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J3
+  description: null
+  representations:
+    pf400_piper:
+    - 677.491
+    - 34.051
+    - 71.435
+    - 701.66
+    - 81.993
+    - -224.842
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: inheco_devID2_floor1_nest
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J4
+  description: null
+  representations:
+    pf400_piper:
+    - 816.868
+    - 66.036
+    - 77.115
+    - 663.59
+    - 81.887
+    - 54.189
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_inheco_dev2
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J5
+  description: null
+  representations:
+    pf400_piper:
+    - 1001.561
+    - 25.97
+    - 122.371
+    - 657.706
+    - 70.527
+    - -103.108
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: tower_deck1
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J6
+  description: null
+  representations:
+    pf400_piper:
+    - 655.606
+    - 39.98
+    - 89.753
+    - 676.393
+    - 82.04
+    - -717.316
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: tower_deck2
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J7
+  description: null
+  representations:
+    pf400_piper:
+    - 745.458
+    - 40.302
+    - 89.187
+    - 677.089
+    - 82.016
+    - -717.307
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: tower_deck3
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J8
+  description: null
+  representations:
+    pf400_piper:
+    - 840.092
+    - 40.374
+    - 89.051
+    - 677.195
+    - 82.01
+    - -717.307
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: tower_deck4
+  location_id: 01K9ZK1F92PE0TDX5A422NE4J9
+  description: null
+  representations:
+    pf400_piper:
+    - 935.222
+    - 40.442
+    - 88.917
+    - 677.262
+    - 82.051
+    - -717.282
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: tower_deck5
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JA
+  description: null
+  representations:
+    pf400_piper:
+    - 1016.476
+    - 40.56
+    - 88.68
+    - 677.378
+    - 82.01
+    - -717.309
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_tower_deck1
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JB
+  description: null
+  representations:
+    pf400_piper:
+    - 672.247
+    - 17.26
+    - 134.825
+    - 653.927
+    - 82.221
+    - -717.291
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_tower_deck2
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JC
+  description: null
+  representations:
+    pf400_piper:
+    - 760.688
+    - 18.372
+    - 133.883
+    - 653.418
+    - 82.186
+    - -716.786
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_tower_deck3
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JD
+  description: null
+  representations:
+    pf400_piper:
+    - 854.408
+    - 16.788
+    - 134.302
+    - 655.33
+    - 82.215
+    - -717.111
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_tower_deck4
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JE
+  description: null
+  representations:
+    pf400_piper:
+    - 950.484
+    - 15.527
+    - 136.545
+    - 654.549
+    - 82.169
+    - -715.834
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_tower_deck5
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JF
+  description: null
+  representations:
+    pf400_piper:
+    - 1120.837
+    - 18.536
+    - 134.023
+    - 653.53
+    - 82.174
+    - -712.89
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: lidnest_1_wide
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JG
+  description: null
+  representations:
+    pf400_piper:
+    - 374.37
+    - 23.786
+    - 114.989
+    - 671.47
+    - 125.146
+    - -611.836
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: lidnest_2_wide
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JH
+  description: null
+  representations:
+    pf400_piper:
+    - 376.183
+    - 20.493
+    - 112.279
+    - 678.14
+    - 125.006
+    - -410.865
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: lidnest_3_narrow
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JJ
+  description: null
+  representations:
+    pf400_piper:
+    - 376.649
+    - 24.595
+    - 107.94
+    - 675.546
+    - 81.389
+    - -194.121
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_lidnest_1
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JK
+  description: null
+  representations:
+    pf400_piper:
+    - 404.584
+    - 6.928
+    - 143.517
+    - 658.529
+    - 125.193
+    - -608.622
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_lidnest_2
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JM
+  description: null
+  representations:
+    pf400_piper:
+    - 404.942
+    - 4.432
+    - 142.13
+    - 662.712
+    - 125.164
+    - -389.37
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_lidnest_3
+  location_id: 01K9ZK1F92PE0TDX5A422NE4JN
+  description: null
+  representations:
+    pf400_piper:
+    - 400.04
+    - -4.149
+    - 147.508
+    - 664.154
+    - 81.629
+    - -194.11
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
 transfer_capabilities: null

@@ -1,8 +1,8 @@
 x-service-template: &service-template
-  image: ghcr.io/ad-sdl/madsci:v0.5.0
+  image: ghcr.io/ad-sdl/madsci:v0.5.3
   environment:
-    - USER_ID=1000
-    - GROUP_ID=1000
+    - USER_ID=${USER_ID:-1000}
+    - GROUP_ID=${GROUP_ID:-1000}
   env_file: ../.env
   network_mode: host
   volumes:
@@ -20,9 +20,9 @@ services:
     depends_on:
       - rapid446_mongodb
 
-  autobots_wc_manager:
+  rapid446_workcell_manager:
     <<: *service-template
-    container_name: autobots_wc_manager
+    container_name: rapid446_workcell_manager
     command: python -m madsci.workcell_manager.workcell_server
     depends_on:
       - rapid446_redis
@@ -35,9 +35,6 @@ services:
     <<: *service-template
     container_name: rapid446_lab_manager
     image: ghcr.io/ad-sdl/madsci_dashboard:latest
-    build:
-      context: ../../MADSci
-      dockerfile: Dockerfile.dashboard
     command: python -m madsci.squid.lab_server
     depends_on:
       - rapid446_redis

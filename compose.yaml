@@ -3,4 +3,4 @@ include:
   - path: docker/infra.compose.yaml
     env_file: .env
   - path: docker/managers.compose.yaml
-  # - path: docker/nodes.compose.yaml
+  - path: docker/batman_nodes.compose.yaml

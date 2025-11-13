@@ -2,4 +2,9 @@ name: rapid446_workcell
 manager_type: workcell_manager
 manager_id: 01K8RDHTCMMHYFBAKVMHQVTQDX
 description: null
-nodes: {}
+nodes:
+  bmg: http://suestorm.cels.anl.gov:3003/
+  inheco_devID2_stackFloor0: http://suestorm.cels.anl.gov:3005/
+  sealer_sassy: http://batman.cels.anl.gov:2000/
+  pf400_piper: http://batman.cels.anl.gov:2001/
+  peeler_penelope: http://batman.cels.anl.gov:2002/
