@@ -1,0 +1,7 @@
+node_name: ot2_spongebob
+node_id: 01KA1MHQ0GE9M8HFNQ9WKH7VM7
+node_description: The Opentrons OT-2 on the left side in RAPID 446
+node_type: device
+module_name: ot2_module
+module_version: 2.0.1
+capabilities: null

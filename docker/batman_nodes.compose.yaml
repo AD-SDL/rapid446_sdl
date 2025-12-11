@@ -44,3 +44,36 @@ services:
       context: ../../brooks_xpeel_module
       dockerfile: Dockerfile
     privileged: true
+  ot2_spongebob:
+    <<: *service-template
+    container_name: ot2_spongebob
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      - NODE_URL=http://batman.cels.anl.gov:2003/
+      - NODE_DEFINITION=/home/madsci/nodes/ot2_spongebob.node.yaml
+      - NODE_OT2_IP=146.137.240.106
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile
+  ot2_patrick:
+    <<: *service-template
+    container_name: ot2_patrick
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      - NODE_URL=http://batman.cels.anl.gov:2004/
+      - NODE_DEFINITION=/home/madsci/nodes/ot2_patrick.node.yaml
+      - NODE_OT2_IP=169.254.86.133
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile
+  otflex_sandy:
+    <<: *service-template
+    container_name: otflex_sandy
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      - NODE_URL=http://batman.cels.anl.gov:2005/
+      - NODE_DEFINITION=/home/madsci/nodes/otflex_sandy.node.yaml
+      - NODE_OT2_IP=146.137.240.11
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile

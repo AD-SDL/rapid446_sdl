@@ -1,0 +1,7 @@
+node_name: otflex_sandy
+node_id: 01KA1MHQ0GNV2XT32X098P7WG8
+node_description: The Opentrons OT Flex in RAPID 446
+node_type: device
+module_name: ot2_module
+module_version: 2.0.1
+capabilities: null

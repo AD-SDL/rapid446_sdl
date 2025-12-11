@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:e5124b4a7824e7dfbff98be1832f0dae087ecfc1aa26f5635a35844d0453c7e6"
+content_hash = "sha256:3960ececbedd809e68900e3b7d11dc215f0271e7b551fc1612c9240aa8200275"
 
 [[metadata.targets]]
 requires_python = ">=3.9.1"
@@ -621,9 +621,9 @@ files = [
 
 [[package]]
 name = "madsci-client"
-version = "0.5.0"
+version = "0.5.4"
 requires_python = ">=3.9.1"
-summary = "The Modular Autonomous Discovery for Science (MADSci) Python Client and CLI."
+summary = "The Modular Autonomous Discovery for Science (MADSci) Python Clients."
 groups = ["default"]
 dependencies = [
     "click>=8.1.7",
@@ -632,13 +632,13 @@ dependencies = [
     "trogon>=0.6.0",
 ]
 files = [
-    {file = "madsci_client-0.5.0-py3-none-any.whl", hash = "sha256:350f63132a8a64a0c238e0b9d946b4a65cf03e744c2971d4fb3ff4e58d9f36fb"},
-    {file = "madsci_client-0.5.0.tar.gz", hash = "sha256:1f7eb89ff83d20042f0d6b5d22a0a893cc535a3948c2e7bf487bbea259d3b946"},
+    {file = "madsci_client-0.5.4-py3-none-any.whl", hash = "sha256:da0811d75f8d8a402c1f1a05cae6bcffdba979d0f988447555c42cf90b1ce6b3"},
+    {file = "madsci_client-0.5.4.tar.gz", hash = "sha256:64754d904ba2a3ee5e256d2c8fcb9c7eab253a0e9289c67c1325357779cc309f"},
 ]
 
 [[package]]
 name = "madsci-common"
-version = "0.5.0"
+version = "0.5.4"
 requires_python = ">=3.9.1"
 summary = "The Modular Autonomous Discovery for Science (MADSci) Common Definitions and Utilities."
 groups = ["default"]
@@ -663,8 +663,8 @@ dependencies = [
     "uvicorn[standard]>=0.32.0",
 ]
 files = [
-    {file = "madsci_common-0.5.0-py3-none-any.whl", hash = "sha256:69f123576a414c046cff5b238ac9b2ab5f3ae895bde69688f1bb3b56bcada3d5"},
-    {file = "madsci_common-0.5.0.tar.gz", hash = "sha256:68c7a2fbd27262ea0d228c1a20c18173d68e653908ebb672bbcdd9fe019f2835"},
+    {file = "madsci_common-0.5.4-py3-none-any.whl", hash = "sha256:98ea6e0cf407a7fbc88767149f5e4f46cb384c8b7960530b7e3629114a1ae126"},
+    {file = "madsci_common-0.5.4.tar.gz", hash = "sha256:a92cef1d94cf6871ed638ac369e2f005935ab0df6af28544412acb30a1090aa8"},
 ]
 
 [[package]]

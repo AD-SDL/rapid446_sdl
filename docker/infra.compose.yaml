@@ -26,3 +26,11 @@ services:
       - 5432:5432
     volumes:
       - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci/postgres:/var/lib/postgresql/data
+  rapid446_redis_commander:
+    container_name: rapid446_redis_commander
+    image: ghcr.io/joeferner/redis-commander:latest
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+    - REDIS_PASSWORD=${WORKCELL_REDIS_PASSWORD}
+    network_mode: host
+    user: redis

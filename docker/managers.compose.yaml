@@ -1,5 +1,6 @@
 x-service-template: &service-template
-  image: ghcr.io/ad-sdl/madsci:v0.5.3
+  # image: ghcr.io/ad-sdl/madsci:v0.5.3
+  image: ghcr.io/ad-sdl/madsci
   environment:
     - USER_ID=${USER_ID:-1000}
     - GROUP_ID=${GROUP_ID:-1000}

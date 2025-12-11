@@ -1,9 +1,9 @@
-node_name: pf400_piper.node
+node_name: pf400_piper
 node_id: 01K9ZGTECF75R64V6EDXBNVTTT
-node_description: null
+node_description: The central sample moving arm in RAPID 446
 node_type: device
-module_name: pf400_node
-module_version: 0.0.1
+module_name: pf400_module
+module_version: 2.1.0
 capabilities:
   get_info: true
   get_state: true
@@ -44,6 +44,24 @@ actions:
         argument_type: str
         required: false
         default: ''
+      grab_offset:
+        name: grab_offset
+        description: Add grab height offset
+        argument_type: float
+        required: false
+        default: null
+      source_approach_height_offset:
+        name: source_approach_height_offset
+        description: Add source approach height offset
+        argument_type: float
+        required: false
+        default: null
+      target_approach_height_offset:
+        name: target_approach_height_offset
+        description: Add target approach height offset
+        argument_type: float
+        required: false
+        default: null
     locations:
       source:
         name: source
@@ -71,7 +89,7 @@ actions:
         default: null
       rotation_deck:
         name: rotation_deck
-        description: Plate rotation deck location
+        description: ''
         argument_type: location
         required: false
         default: null
@@ -93,6 +111,18 @@ actions:
         argument_type: str
         required: false
         default: ''
+      grab_offset:
+        name: grab_offset
+        description: Add grab height offset
+        argument_type: float
+        required: false
+        default: null
+      approach_height_offset:
+        name: approach_height_offset
+        description: Add approach height offset
+        argument_type: float
+        required: false
+        default: null
     locations:
       source:
         name: source
@@ -124,6 +154,18 @@ actions:
         argument_type: str
         required: false
         default: ''
+      grab_offset:
+        name: grab_offset
+        description: Add grab height offset
+        argument_type: float
+        required: false
+        default: null
+      approach_height_offset:
+        name: approach_height_offset
+        description: Add approach height offset
+        argument_type: float
+        required: false
+        default: null
     locations:
       target:
         name: target
@@ -167,6 +209,18 @@ actions:
         argument_type: float
         required: false
         default: 7.0
+      grab_offset:
+        name: grab_offset
+        description: Add grab height offset
+        argument_type: float
+        required: false
+        default: null
+      approach_height_offset:
+        name: approach_height_offset
+        description: Add approach height offset
+        argument_type: float
+        required: false
+        default: null
     locations:
       source:
         name: source
@@ -222,6 +276,18 @@ actions:
         argument_type: float
         required: false
         default: 7.0
+      grab_offset:
+        name: grab_offset
+        description: Add grab height offset
+        argument_type: float
+        required: false
+        default: null
+      approach_height_offset:
+        name: approach_height_offset
+        description: Add approach height offset
+        argument_type: float
+        required: false
+        default: null
     locations:
       source:
         name: source

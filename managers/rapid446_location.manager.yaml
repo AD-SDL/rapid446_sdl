@@ -835,11 +835,11 @@ locations:
       - 81.987
       - -999.187
     - - 836.0
-      - -53.645
-      - 276.521
-      - 404.776
-      - 81.887
-      - -854.065
+      - -14.576
+      - 243.968
+      - 400.331
+      - 70.521
+      - -998.743
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -1114,7 +1114,7 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 1071.692
+    - 1067.71
     - -55.19
     - 276.099
     - 407.102

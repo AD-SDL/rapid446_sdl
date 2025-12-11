@@ -7,7 +7,7 @@ authors = [
     {name = "Abraham Stroka", email = "astroka@anl.gov"},
     {name = "Casey Stone", email = "cstone@anl.gov"},
 ]
-dependencies = ["madsci-common~=0.5.0", "madsci-client~=0.5.0"]
+dependencies = ["madsci-common~=0.5.4", "madsci-client~=0.5.4"]
 requires-python = ">=3.9.1"
 readme = "README.md"
 license = {text = "MIT"}

@@ -3,8 +3,14 @@ manager_type: workcell_manager
 manager_id: 01K8RDHTCMMHYFBAKVMHQVTQDX
 description: null
 nodes:
-  bmg: http://suestorm.cels.anl.gov:3003/
-  inheco_devID2_stackFloor0: http://suestorm.cels.anl.gov:3005/
+  hidex_geraldine: http://suestorm.cels.anl.gov:3000/
+  bmg_billy: http://suestorm.cels.anl.gov:3003/
+  inheco_irene_2.0: http://suestorm.cels.anl.gov:3005/
+  inheco_iris_2.1: http://suestorm.cels.anl.gov:3006/
   sealer_sassy: http://batman.cels.anl.gov:2000/
   pf400_piper: http://batman.cels.anl.gov:2001/
   peeler_penelope: http://batman.cels.anl.gov:2002/
+  ot2_spongebob: http://batman.cels.anl.gov:2003/
+  ot2_patrick: http://batman.cels.anl.gov:2004/
+  otflex_sandy: http://batman.cels.anl.gov:2005/
+  biometra_beuford_96: http://suestorm.cels.anl.gov:3008/

@@ -3,7 +3,7 @@ node_id: 01K9DKWEV7KD1FS72RMEYMEGTZ
 node_description: The A4S Sealer in RAPID 446
 node_type: device
 module_name: sealer_node
-module_version: 0.0.1
+module_version: 1.2.0
 capabilities:
   get_info: true
   get_state: true
