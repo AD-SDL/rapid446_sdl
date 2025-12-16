@@ -189,6 +189,34 @@ locations:
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
+- location_name: ot2_patrick_nest4_temp_block_wide
+  location_id: 01KCMJJSXJQCFV4W186EEA2RC7
+  description: null
+  representations:
+    pf400_piper:
+    - 794.679
+    - -45.56
+    - 282.503
+    - 391.84
+    - 124.842
+    - 78.894
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: ot2_patrick_nest6_temp_block_wide
+  location_id: 01KCMMD5WAH8ZJ0356K6EBCX69
+  description: null
+  representations:
+    pf400_piper:
+    - 794.679
+    - -51.978
+    - 280.932
+    - 399.924
+    - 122.374
+    - -132.162
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
 - location_name: safe_path_ot2_patrick
   location_id: 01K9ZK1F917ACYTNC3Z4QXRDHK
   description: null
@@ -200,6 +228,34 @@ locations:
     - 356.524
     - 70.515
     - -257.671
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_ot2_patrick_nest4_high
+  location_id: 01KCMJJSXJQCFV4W186EEA2RC8
+  description: null
+  representations:
+    pf400_piper:
+    - 835.527
+    - 4.853
+    - 208.917
+    - 415.006
+    - 124.853
+    - 78.894
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_ot2_patrick_nest6_high
+  location_id: 01KCMMD5WAH8ZJ0356K6EBCX6A
+  description: null
+  representations:
+    pf400_piper:
+    - 834.974
+    - -17.149
+    - 205.486
+    - 440.54
+    - 122.386
+    - -132.17
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -678,12 +734,12 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 376.183
-    - 20.493
-    - 112.279
-    - 678.14
-    - 125.006
-    - -410.865
+    - 375.098
+    - 28.008
+    - 114.393
+    - 668.18
+    - 125.252
+    - -359.793
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
