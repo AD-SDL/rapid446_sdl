@@ -36,7 +36,7 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 631.616
+    - 632.616
     - -19.079
     - 65.561
     - 732.286
@@ -64,7 +64,7 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 631.616
+    - 632.616
     - 4.798
     - 93.345
     - 592.047
@@ -278,12 +278,12 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 706.99
-    - -35.793
-    - 256.701
-    - 408.513
-    - 122.046
-    - 576.262
+    - 709
+    - -27.154
+    - 259.456
+    - 396.97
+    - 121.799
+    - 510.032
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
