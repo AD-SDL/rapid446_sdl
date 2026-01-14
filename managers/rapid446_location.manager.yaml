@@ -504,12 +504,12 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 611.277
-    - 8.035
-    - 107.426
-    - 691.801
-    - 82.004
-    - 917.639
+    - 611.179
+    - 2.415
+    - 87.271
+    - 717.998
+    - 82.163
+    - 791.008
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -524,12 +524,12 @@ locations:
       - 542.97
       - 82.151
       - 702.229
-    - - 837.705
-      - 5.468
-      - 111.581
-      - 687.601
-      - 70.486
-      - 917.949
+    - - 742.951
+      - -24.024
+      - 109.668
+      - 722.046
+      - 82.163
+      - 791.006
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
