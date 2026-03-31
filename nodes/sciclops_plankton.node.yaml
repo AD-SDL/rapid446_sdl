@@ -1,0 +1,7 @@
+node_name: sciclops_plankton
+node_id: 01KN09Q3YKF7W143NWYCQM242M
+node_description: null
+node_type: device
+module_name: hudson_sciclops_node
+module_version: 0.0.1
+capabilities: null

@@ -77,3 +77,15 @@ services:
     build:
       context: ../../ot2_module
       dockerfile: Dockerfile
+  sciclops_plankton:
+    <<: *service-template
+    container_name: sciclops_plankton
+    image: ghcr.io/ad-sdl/sciclops_module
+    environment:
+      - NODE_URL=http://batman.cels.anl.gov:3005/
+      - NODE_DEFINITION=/home/madsci/nodes/sciclops_plankton.node.yaml
+    build:
+      context: ../../sciclops_module
+      dockerfile: Dockerfile
+    command: python /home/madsci/sciclops_module/src/sciclops_rest_node.py
+    privileged: true

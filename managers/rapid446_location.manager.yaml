@@ -42,6 +42,14 @@ locations:
     - 732.286
     - 78.587
     - 752.82
+    sciclops_plankton:
+      joint_angles:
+        Z: -416.8438
+        R: 299.8747
+        Y: 153.6526
+        P: 21.5057
+      location_type: nest
+      safe_approach_height: 0
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -119,6 +127,32 @@ locations:
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
+- location_name: safe_path_exchange_tip_box_wide
+  location_id: 01KC2MR97Y1RYCVXNTFK10H19Q
+  description: null
+  representations:
+    pf400_piper:
+    - - 1016.476
+      - 0.265
+      - 175.445
+      - 540.11
+      - 70.521
+      - 543.01
+    - - 1016.476
+      - 3.342
+      - 90.607
+      - 586.714
+      - 70.556
+      - 918.234
+    - - 968.391
+      - 6.468
+      - 73.135
+      - 606.618
+      - 70.463
+      - 816.451
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
 - location_name: safe_exchange_height
   location_id: 01K9ZK1F917ACYTNC3Z4QXRDHE
   description: null
@@ -180,12 +214,12 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 707.704
-    - -23.803
-    - 261.289
-    - 391.475
-    - 121.84
-    - -255.627
+    - 709.171
+    - -28.689
+    - 258.676
+    - 398.645
+    - 121.618
+    - -212.769
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -306,12 +340,12 @@ locations:
   description: null
   representations:
     pf400_piper:
-    - 800.149
-    - 22.186
-    - 285.576
-    - 320.182
-    - 81.893
-    - 999.494
+    - 801.588
+    - 3.914
+    - 327.361
+    - 296.383
+    - 81.899
+    - 901.963
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
@@ -1204,6 +1238,197 @@ locations:
     - 407.391
     - 81.875
     - -966.018
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: basement_nestB1
+  location_id: 01KM1F42H9C8X36CWEZTB60TFW
+  description: null
+  representations:
+    pf400_piper:
+    - 254.888
+    - -11.453
+    - 261.747
+    - 377.795
+    - 81.618
+    - 604.598
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_basement_1
+  location_id: 01KM1FB36CRYKAPAMDXN2K7J82
+  description: null
+  representations:
+    pf400_piper:
+    - 303.283
+    - 20.212
+    - 233.804
+    - 374.067
+    - 81.623
+    - 604.596
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: basement_nestB2
+  location_id: 01KM1FZAPJ08Y69988MRNZ8X4W
+  description: null
+  representations:
+    pf400_piper:
+    - 254.888
+    - -17.961
+    - 253.556
+    - 392.408
+    - 81.612
+    - 523.517
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_basement_2
+  location_id: 01KM1FZAPJ08Y69988MRNZ8X4X
+  description: null
+  representations:
+    pf400_piper:
+    - 298.62
+    - 13.469
+    - 221.96
+    - 392.569
+    - 81.641
+    - 523.518
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_sciclops
+  location_id: 01KN06CWP4BSMYGANATF8MHFPN
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: 23.5188
+        R: 109.2741
+        Y: 32.7484
+        P: 98.2955
+      location_type: nest
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: home_sciclops
+  location_id: 01KN06CWP4BSMYGANATF8MHFPP
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -1.0188
+        R: 0.0
+        Y: 0.0
+        P: -0.0284
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: stack_1
+  location_id: 01KN06CWP4BSMYGANATF8MHFPQ
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -397.1688
+        R: 137.1106
+        Y: 173.0127
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: stack_2
+  location_id: 01KN2NY5N74XZ2R5TJT571HY74
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -397.2875
+        R: 154.9712
+        Y: 172.5352
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: stack_3
+  location_id: 01KN2NY5N74XZ2R5TJT571HY75
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -397.3563
+        R: 173.0506
+        Y: 172.7398
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: stack_4
+  location_id: 01KN2NY5N74XZ2R5TJT571HY76
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -396.1
+        R: 191.1141
+        Y: 172.4918
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: stack_5
+  location_id: 01KN2NY5N74XZ2R5TJT571HY77
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -394.4875
+        R: 209.0771
+        Y: 172.5104
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: lidnest_4_sciclops
+  location_id: 01KN06CWP4BSMYGANATF8MHFPR
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -386.8563
+        R: 173.13
+        Y: 26.1751
+        P: 10.3409
+      location_type: nest
+      safe_approach_height: 0
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: lidnest_5_sciclops
+  location_id: 01KN2NY5N74XZ2R5TJT571HY78
+  description: null
+  representations:
+    sciclops_plankton:
+      joint_angles:
+        Z: -386.8563
+        R: 205.2971
+        Y: 26.448
+        P: 10.2841
+      location_type: nest
+      safe_approach_height: 0
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
