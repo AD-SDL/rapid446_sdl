@@ -1,0 +1,439 @@
+node_name: sciclops_plankton
+node_id: 01KN09Q3YKF7W143NWYCQM242M
+node_description: null
+node_type: device
+module_name: hudson_sciclops_node
+module_version: 0.0.1
+capabilities:
+  get_info: true
+  get_state: true
+  get_status: true
+  send_action: true
+  get_action_status: true
+  get_action_result: true
+  get_action_history: true
+  action_files: true
+  send_admin_commands: true
+  set_config: true
+  get_resources: false
+  get_log: true
+  admin_commands:
+  - lock
+  - reset
+  - shutdown
+  - unlock
+node_url: null
+actions:
+  home:
+    name: home
+    description: Homes the SciClops.
+    args: {}
+    locations: {}
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  pick:
+    name: pick
+    description: Picks labware from a location, ending in the PlateCrane gripper.
+    args:
+      plate_type:
+        name: plate_type
+        description: ''
+        argument_type: str
+        required: false
+        default: null
+      height_offset:
+        name: height_offset
+        description: Height offset in mm
+        argument_type: int
+        required: false
+        default: 0
+      is_lid:
+        name: is_lid
+        description: Is the labware a lid?
+        argument_type: bool
+        required: false
+        default: false
+      has_lid:
+        name: has_lid
+        description: Does the labware have a lid?
+        argument_type: bool
+        required: false
+        default: false
+      incremental_lift:
+        name: incremental_lift
+        description: Incremental lift during transfer
+        argument_type: bool
+        required: false
+        default: false
+    locations:
+      source:
+        name: source
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  place:
+    name: place
+    description: Places labware at a location.
+    args:
+      plate_type:
+        name: plate_type
+        description: ''
+        argument_type: str
+        required: false
+        default: null
+      height_offset:
+        name: height_offset
+        description: Height offset in mm.
+        argument_type: int
+        required: false
+        default: 0
+      is_lid:
+        name: is_lid
+        description: Is the plate a lid?
+        argument_type: bool
+        required: false
+        default: false
+      replacing_lid:
+        name: replacing_lid
+        description: Are you replacing a lid?
+        argument_type: bool
+        required: false
+        default: false
+    locations:
+      target:
+        name: target
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  transfer:
+    name: transfer
+    description: Transfers a plate from one location to another.
+    args:
+      plate_type:
+        name: plate_type
+        description: ''
+        argument_type: str
+        required: false
+        default: null
+      source_height_offset:
+        name: source_height_offset
+        description: Height offset in mm.
+        argument_type: int
+        required: false
+        default: 0
+      target_height_offset:
+        name: target_height_offset
+        description: Height offset in mm.
+        argument_type: int
+        required: false
+        default: 0
+      has_lid:
+        name: has_lid
+        description: Does the plate have a lid?
+        argument_type: bool
+        required: false
+        default: false
+    locations:
+      source:
+        name: source
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+      target:
+        name: target
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  move:
+    name: move
+    description: Moves the SciClops to a specified location.
+    args: {}
+    locations:
+      location:
+        name: location
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  remove_lid:
+    name: remove_lid
+    description: Removes a lid from a plate.
+    args:
+      plate_type:
+        name: plate_type
+        description: Type of plate, e.g. 'flat_bottom_96well' or 'deep_96well
+        argument_type: str
+        required: true
+        default: null
+      height_offset:
+        name: height_offset
+        description: Height offset in motor steps
+        argument_type: int
+        required: false
+        default: 0
+      ignore_resource_checks:
+        name: ignore_resource_checks
+        description: True to ignore ResourceClient validations, False otherwise.
+        argument_type: bool
+        required: false
+        default: false
+    locations:
+      source:
+        name: source
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+      target:
+        name: target
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  replace_lid:
+    name: replace_lid
+    description: Replaces a lid on a plate.
+    args:
+      plate_type:
+        name: plate_type
+        description: Type of plate, e.g. 'flat_bottom_96well' or 'deep_96well'
+        argument_type: str
+        required: true
+        default: null
+      height_offset:
+        name: height_offset
+        description: Height offset in motor steps
+        argument_type: int
+        required: false
+        default: 0
+      ignore_resource_checks:
+        name: ignore_resource_checks
+        description: True to ignore ResourceClient validations, False otherwise.
+        argument_type: bool
+        required: false
+        default: false
+    locations:
+      source:
+        name: source
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+      target:
+        name: target
+        description: ''
+        argument_type: location
+        required: true
+        default: null
+    files: {}
+    results: {}
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+  get_current_position:
+    name: get_current_position
+    description: Returns the location joint angles of the SciClops.
+    args: {}
+    locations: {}
+    files: {}
+    results:
+      json_result:
+        result_label: json_result
+        description: null
+        result_type: json
+        json_schema:
+          properties:
+            data:
+              items: {}
+              title: Data
+              type: array
+          required:
+          - data
+          title: listModel
+          type: object
+    blocking: true
+    asynchronous: true
+    accepts_var_args: false
+    accepts_var_kwargs: false
+    var_args_schema: null
+    var_kwargs_schema: null
+config:
+  node_definition: /home/madsci/nodes/sciclops_plankton.node.yaml
+  node_info_path: null
+  update_node_files: true
+  status_update_interval: 2.0
+  state_update_interval: 2.0
+  node_url: http://batman.cels.anl.gov:3005/
+  uvicorn_kwargs:
+    limit_concurrency: 10
+  enable_rate_limiting: true
+  rate_limit_requests: 100
+  rate_limit_window: 60
+  rate_limit_short_requests: 50
+  rate_limit_short_window: 1
+  rate_limit_cleanup_interval: 300
+  default_speed: 100
+config_schema:
+  description: Configuration for the SciClops REST Node.
+  properties:
+    node_definition:
+      anyOf:
+      - type: string
+      - format: path
+        type: string
+      - type: 'null'
+      default: default.node.yaml
+      description: Path to the node definition file to use. If set, the node will
+        load the definition from this file on startup. Otherwise, a default configuration
+        will be created.
+      title: Node Definition File
+    node_info_path:
+      anyOf:
+      - type: string
+      - format: path
+        type: string
+      - type: 'null'
+      default: null
+      description: Path to export the generated node info file. If not set, will use
+        the node name and the node_definition's path.
+      title: Node Info Path
+    update_node_files:
+      default: true
+      description: Whether to update the node definition and info files on startup.
+        If set to False, the node will not update the files even if they are out of
+        date.
+      title: Update Node Files
+      type: boolean
+    status_update_interval:
+      anyOf:
+      - type: number
+      - type: 'null'
+      default: 2.0
+      description: The interval in seconds at which the node should update its status.
+      title: Status Update Interval
+    state_update_interval:
+      anyOf:
+      - type: number
+      - type: 'null'
+      default: 2.0
+      description: The interval in seconds at which the node should update its state.
+      title: State Update Interval
+    node_url:
+      default: http://127.0.0.1:2000/
+      description: The URL used to communicate with the node. This is the base URL
+        for the REST API.
+      format: uri
+      minLength: 1
+      title: Node URL
+      type: string
+    uvicorn_kwargs:
+      additionalProperties: true
+      description: Configuration for the Uvicorn server that runs the REST API. By
+        default, sets limit_concurrency=10 to protect against connection exhaustion
+        attacks.
+      title: Uvicorn Configuration
+      type: object
+    enable_rate_limiting:
+      default: true
+      description: Enable rate limiting middleware for the REST API.
+      title: Enable Rate Limiting
+      type: boolean
+    rate_limit_requests:
+      default: 100
+      description: Maximum number of requests allowed per long time window (only used
+        if enable_rate_limiting is True).
+      minimum: 1
+      title: Rate Limit Requests
+      type: integer
+    rate_limit_window:
+      default: 60
+      description: Long time window in seconds for rate limiting (only used if enable_rate_limiting
+        is True).
+      minimum: 1
+      title: Rate Limit Window
+      type: integer
+    rate_limit_short_requests:
+      anyOf:
+      - minimum: 1
+        type: integer
+      - type: 'null'
+      default: 50
+      description: Maximum number of requests allowed per short time window for burst
+        protection (only used if enable_rate_limiting is True). If None, short window
+        limiting is disabled.
+      title: Rate Limit Short Requests
+    rate_limit_short_window:
+      anyOf:
+      - minimum: 1
+        type: integer
+      - type: 'null'
+      default: 1
+      description: Short time window for burst protection in seconds (only used if
+        enable_rate_limiting is True). If None, short window limiting is disabled.
+      title: Rate Limit Short Window
+    rate_limit_cleanup_interval:
+      default: 300
+      description: Interval in seconds between cleanup operations to prevent memory
+        leaks (only used if enable_rate_limiting is True).
+      minimum: 1
+      title: Rate Limit Cleanup Interval
+      type: integer
+    default_speed:
+      default: 100
+      title: Default Speed
+      type: integer
+  title: SciClopsConfig
+  type: object

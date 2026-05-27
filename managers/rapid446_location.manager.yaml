@@ -44,10 +44,10 @@ locations:
     - 752.82
     sciclops_plankton:
       joint_angles:
-        Z: -416.8438
-        R: 299.8747
-        Y: 153.6526
-        P: 21.5057
+        Z: -414.6188
+        R: 298.0041
+        Y: 195.3245
+        P: 17.6136
       location_type: nest
       safe_approach_height: 0
   resource_template_name: null
@@ -567,7 +567,7 @@ locations:
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
-- location_name: inheco_devID2_floor0_nest
+- location_name: inheco_irene_2.0_nest
   location_id: 01K9ZK1F92PE0TDX5A422NE4J3
   description: null
   representations:
@@ -581,7 +581,7 @@ locations:
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
-- location_name: inheco_devID2_floor1_nest
+- location_name: inheco_iris_2.1_nest
   location_id: 01K9ZK1F92PE0TDX5A422NE4J4
   description: null
   representations:
@@ -595,8 +595,22 @@ locations:
   resource_template_name: null
   resource_template_overrides: null
   allow_transfers: true
-- location_name: safe_path_inheco_dev2
-  location_id: 01K9ZK1F92PE0TDX5A422NE4J5
+- location_name: safe_path_inheco_irene_2.0
+  location_id: 01KNAAMT62T641M0PGMCMZBHMC
+  description: null
+  representations:
+    pf400_piper:
+    - 694.144
+    - 25.97
+    - 122.371
+    - 657.706
+    - 70.527
+    - -103.108
+  resource_template_name: null
+  resource_template_overrides: null
+  allow_transfers: true
+- location_name: safe_path_inheco_iris_2.1
+  location_id: 01KNAAMT62T641M0PGMCMZBHMD
   description: null
   representations:
     pf400_piper:
