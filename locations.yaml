@@ -1,0 +1,230 @@
+# MADSci Example Lab - Location Configuration
+#
+# This file defines lab-level locations, location templates, and training
+# (cross-node representation additions). Node-intrinsic locations (e.g.,
+# liquid handler deck slots, plate reader carriage) are auto-created by
+# nodes on startup via their intrinsic_locations class variable.
+#
+# Format: LabLocationConfig (reconcilable living document)
+#   - representation_templates: lab-level representation templates
+#   - location_templates: reusable location blueprints
+#   - training: add node representations to existing locations
+#   - locations: lab-managed locations not owned by any node
+
+# Location templates: reusable blueprints for creating locations.
+# Roles map to representation templates; at instantiation time, node
+# bindings map roles to concrete node instance names.
+location_templates:
+#   - template_name: storage_rack_nest
+#     description: >-
+#       A single nest/slot in a storage rack. Each nest holds one plate
+#       and is accessed by a transfer arm. Instantiate multiple nests
+#       to build out a full rack.
+#     resource_template_name: location_container
+#     representation_templates:
+#       transfer_arm: robotarm_wide_access
+#     default_allow_transfers: true
+#     tags:
+#       - storage
+#       - rack
+#       - nest
+#     version: "1.0.0"
+
+  - template_name: nest_template
+    description: >-
+      A single deck location on the RAPID-446 workcell.
+    resource_template_name: nest_resource_template
+    representation_templates:
+      transfer_arm: pf400_deck_location_template  # TESTING what?
+    default_allow_transfers: true
+    tags:
+      - nest
+    version: "1.0.1"
+
+# Training: teach the robot arm how to access specific node-managed locations.
+# These add robotarm_1's representation to node-owned locations.
+training:
+  # # liquidhandler_1 — decks 1 and 3 accessible by robotarm_1
+  # - location_name: liquidhandler_1.deck_1
+  #   node_name: robotarm_1
+  #   representation_template_name: robotarm_deck_access
+  #   overrides:
+  #     position: [10, 15, 5]
+
+  # - location_name: liquidhandler_1.deck_3
+  #   node_name: robotarm_1
+  #   representation_template_name: robotarm_deck_access
+  #   overrides:
+  #     position: [20, 15, 5]
+
+  # # liquidhandler_2 — decks 1 and 3 accessible by robotarm_1
+  # - location_name: liquidhandler_2.deck_1
+  #   node_name: robotarm_1
+  #   representation_template_name: robotarm_deck_access
+  #   overrides:
+  #     position: [5, 15, 5]
+
+  # - location_name: liquidhandler_2.deck_3
+  #   node_name: robotarm_1
+  #   representation_template_name: robotarm_deck_access
+  #   overrides:
+  #     position: [25, 15, 5]
+
+  # # platereader_1 — plate carriage accessible by robotarm_1
+  # - location_name: platereader_1.plate_carriage
+  #   node_name: robotarm_1
+  #   representation_template_name: robotarm_wide_access
+  #   overrides:
+  #     position: [15, 10, 8]
+
+  - location_name: peeler_penelope.peeler_carriage  # Calibration is at least close
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [131.938,-3.04,298.772,-387.426,74.542,-815.554]
+      approach: [[264.35,2.132,180.035,-186.088,70.463,-720.668],[176.115,11.118,286.513,-391.009,74.519,-815.712]]
+      plate_rotation: "narrow"
+
+  - location_name: sealer_sassy.sealer_carriage  # TODO
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      # location: [131.938,-3.04,298.772,-387.426,74.542,-815.554]  # TODO
+      # approach: [176.115,11.118,286.513,-391.009,74.519,-815.712]
+      plate_rotation: "narrow"
+
+  - location_name: ot2_spongebob.deck_nest_1
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      # location: [882.683,34.97,113.216,-60.536,115.228,-134.318] # before height detect
+      # location: [874.61,34.97,113.216,-60.536,115.228,-134.318]  # after height detect
+      location: [874.61,53.888,109.608,-75.934,121.471,-33.220] # after calibration using exchange (grip height on plate of 10)
+      # approach: [944.753,20.865,156.618,-89.836,121.635,-134.337]
+      approach: [936.913,54.236,138.589,-105.263,121.483,-33.218]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_spongebob.deck_nest_3
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      # location: [882.683,20.866,110.646,-44.85,121.506,40.346]
+      location: [874.52,22.108,110.869,-45.158,121.501,51.231]
+      # location: [874.61,22.108,110.869,-45.158,121.501,51.231]
+      approach: [948.840,-4.394,145.415,-53.199,121.501,51.233]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: sciclops_plankton.safe
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: 23.5188
+        R: 109.2741
+        Y: 32.7484
+        P: 98.2955
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.lid_nest_1  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -386.8563
+        R: 173.13
+        Y: 26.1751
+        P: 10.3409
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.lid_nest_2  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -386.8563
+        R: 205.2971
+        Y: 26.448
+        P: 10.2841
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_1  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.1688
+        R: 137.1106
+        Y: 173.0127
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_2  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.2875
+        R: 154.9712
+        Y: 172.5352
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_3  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.3563
+        R: 173.0506
+        Y: 172.7398
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_4  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -396.1
+        R: 191.1141
+        Y: 172.4918
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_5  # RECALIBRATE!
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -394.4875
+        R: 209.0771
+        Y: 172.5104
+        P: 9.6875
+      location_type: stack
+      safe_approach_height: 0
+
+
+
+
+# Lab-managed locations (not owned by any node)
+locations:
+  - location_name: exchange_wide   # RECALIBRATE!
+    description: "Exchange and rotation deck for the RAPID-446 Workcell, wide orientation."
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: exchange_narrow  # RECALIBRATE!
+    description: "Exchange and rotation deck for the RAPID-446 Workcell, narrow orientation."
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template

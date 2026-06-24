@@ -1,0 +1,8 @@
+# otflex_sandy — Opentrons OT Flex in RAPID 446
+# Committed defaults. Override locally via nodes/otflex_sandy/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: otflex_sandy
+node_url: http://146.137.240.20:2005/
+enable_registry_resolution: true
+ot2_ip: 146.137.240.11

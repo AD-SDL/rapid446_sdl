@@ -1,0 +1,8 @@
+# pf400_piper — Precise Automation PF400 arm in RAPID 446
+# Committed defaults. Override locally via nodes/pf400_piper/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: pf400_piper
+node_url: http://146.137.240.20:2001/
+enable_registry_resolution: true
+pf400_ip: 192.168.0.1
