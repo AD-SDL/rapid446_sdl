@@ -77,12 +77,12 @@ training:
   #   overrides:
   #     position: [15, 10, 8]
 
-  - location_name: peeler_penelope.peeler_carriage  # Calibration is at least close
+  - location_name: peeler_penelope.peeler_carriage
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [131.938,-3.04,298.772,-387.426,74.542,-815.554]
-      approach: [[264.35,2.132,180.035,-186.088,70.463,-720.668],[176.115,11.118,286.513,-391.009,74.519,-815.712]]
+      location: [119.930,-37.416,235.562,-289.868,81.653,-351.107]
+      approach: [214.332,-3.381,205.231,-293.590,81.700,-415.130]
       plate_rotation: "narrow"
 
   - location_name: sealer_sassy.sealer_carriage  # TODO
@@ -93,30 +93,67 @@ training:
       # approach: [176.115,11.118,286.513,-391.009,74.519,-815.712]
       plate_rotation: "narrow"
 
-  - location_name: ot2_spongebob.deck_nest_1
+  - location_name: ot2_spongebob.deck_nest_1  # WORKS!
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      # location: [882.683,34.97,113.216,-60.536,115.228,-134.318] # before height detect
-      # location: [874.61,34.97,113.216,-60.536,115.228,-134.318]  # after height detect
       location: [874.61,53.888,109.608,-75.934,121.471,-33.220] # after calibration using exchange (grip height on plate of 10)
-      # approach: [944.753,20.865,156.618,-89.836,121.635,-134.337]
       approach: [936.913,54.236,138.589,-105.263,121.483,-33.218]
       plate_rotation: "wide"
       gripper_height_offset: 7
 
-  - location_name: ot2_spongebob.deck_nest_3
+  - location_name: ot2_spongebob.deck_nest_3  # WORKS!
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      # location: [882.683,20.866,110.646,-44.85,121.506,40.346]
       location: [874.52,22.108,110.869,-45.158,121.501,51.231]
-      # location: [874.61,22.108,110.869,-45.158,121.501,51.231]
       approach: [948.840,-4.394,145.415,-53.199,121.501,51.233]
       plate_rotation: "wide"
       gripper_height_offset: 7
 
-  - location_name: sciclops_plankton.safe
+  - location_name: ot2_patrick.deck_nest_1   # WORKS!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [100.75,40.591,113.392,-65.575,121.547,-99.353]
+      approach: [231.487,33.009,141.722,-86.417,121.594,-99.350]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_patrick.deck_nest_3   # WORKS!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [100.75,27.382,113.062,-52.039,121.618,91.142]
+      approach: [219.582,-2.543,157.544,-66.574,121.606,90.554]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: hidex_geraldine.hidex_carriage  # WORKS!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [868.193,-7.966,227.225,-311.000,81.676,499.967]
+      approach: [944.028,25.106,202.744,-319.599,81.694,499.968]
+      plate_rotation: "narrow"
+
+  - location_name: inheco_irene_2.0.inheco_carriage  # WORKS!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [866.575,-56.886,256.534,-291.124,90.029,327.368]
+      approach: [887.032,-57.594,213.360,-247.238,70.469,372.325]
+      plate_rotation: "narrow"
+
+  - location_name: inheco_iris_2.1.inheco_carriage  # RECALIBRATE!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      # location: [866.575,-56.886,256.534,-291.124,90.029,327.368]
+      # approach: [887.032,-57.594,213.360,-247.238,70.469,372.325]
+      plate_rotation: "narrow"
+
+  - location_name: sciclops_plankton.safe  # RECALIBRATE!
     node_name: sciclops_plankton
     representation_template_name: sciclops_deck_location_template
     overrides:
@@ -134,7 +171,7 @@ training:
     overrides:
       joint_angles:
         Z: -386.8563
-        R: 173.13
+        R: 172.43
         Y: 26.1751
         P: 10.3409
       location_type: nest
@@ -212,19 +249,22 @@ training:
       location_type: stack
       safe_approach_height: 0
 
-
-
-
 # Lab-managed locations (not owned by any node)
 locations:
-  - location_name: exchange_wide   # RECALIBRATE!
+  - location_name: exchange_wide   # WORKS!
     description: "Exchange and rotation deck for the RAPID-446 Workcell, wide orientation."
     representations:
       pf400_piper:
     resource_template_name: nest_resource_template
 
-  - location_name: exchange_narrow  # RECALIBRATE!
+  - location_name: exchange_narrow  # WORKS!
     description: "Exchange and rotation deck for the RAPID-446 Workcell, narrow orientation."
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: bmg_temp   # WORKS!
+    description: "TEMP location for the BMG - add intrinsic location to bmg!"
     representations:
       pf400_piper:
     resource_template_name: nest_resource_template
