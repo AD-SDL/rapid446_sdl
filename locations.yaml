@@ -171,7 +171,7 @@ training:
     representation_template_name: sciclops_deck_location_template
     overrides:
       joint_angles:
-        Z: -386.6563
+        Z: -389.1938
         R: 172.5865
         Y: 26.1689
         P: 10.5114
@@ -183,7 +183,7 @@ training:
     representation_template_name: sciclops_deck_location_template
     overrides:
       joint_angles:
-        Z: -386.6688
+        Z: -389.1938
         R: 204.9335
         Y: 26.1689
         P: 10.1989
@@ -195,7 +195,7 @@ training:
     representation_template_name: sciclops_deck_location_template
     overrides:
       joint_angles:
-        Z: -411.3813
+        Z: -412.9313
         R: 233.5482
         Y: 8.4956
         P: -9.9432
