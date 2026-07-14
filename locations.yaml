@@ -52,12 +52,12 @@ training:
       approach: [214.332,-3.381,205.231,-293.590,81.700,-415.130]
       plate_rotation: "narrow"
 
-  - location_name: sealer_sassy.sealer_carriage  # NOT GOOD!
+  - location_name: sealer_sassy.sealer_carriage  # DONE!
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [923.478,16.256,260.444,-369.045,89.947,553.154]
-      approach: [969.104,43.825,228.438,-364.273,77.520,651.082]
+      location: [916.021,5.482,226.518,-324.455,78.528,755.594]
+      approach: [972.111,43.095,208.298,-343.851,78.534,755.594]
       plate_rotation: "narrow"
 
   - location_name: ot2_spongebob.deck_nest_1  # DONE!
@@ -270,6 +270,23 @@ training:
       location_type: stack
       safe_approach_height: 0
 
+  - location_name: ot2_patrick.deck_nest_4_temp_block  # Done!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [186.151,53.536,90.400,-55.346,122.157,-76.133]
+      approach: [234.544,41.052,144.171,-96.633,122.180,-76.124]
+      plate_rotation: "wide"
+
+  - location_name: ot2_patrick.deck_nest_6_temp_block  # DONE!
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [186.151,40.833,90.785,-43.327,122.175,100.824]
+      approach: [252.433,-0.511,162.754,-73.956,122.180,100.823]
+      plate_rotation: "wide"
+
+
 # Lab-managed locations (not owned by any node)
 locations:
   - location_name: exchange_wide   # DONE!
@@ -284,14 +301,110 @@ locations:
       pf400_piper:
     resource_template_name: nest_resource_template
 
-  - location_name: wall_test1
-    description: "Test wall location 1"
+  - location_name: rack1_row1_nest1
+    description: "rack 1, row1, nest 1 pf400 accessible location"
     representations:
       pf400_piper:
     resource_template_name: nest_resource_template
 
-  - location_name: wall_test2
-    description: "Test wall location 2"
+  - location_name: rack1_row1_nest2
+    description: "rack 1, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row1_nest3
+    description: "rack 1, row1, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest1
+    description: "rack 1, row2, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest2
+    description: "rack 1, row2, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest3
+    description: "rack 1, row2, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest1
+    description: "rack 1, row3, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest2
+    description: "rack 1, row3, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest3
+    description: "rack 1, row3, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest1
+    description: "rack 1, row4, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest2
+    description: "rack 1, row4, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest3
+    description: "rack 1, row4, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest1
+    description: "rack 1, row5, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest2
+    description: "rack 1, row5, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest3
+    description: "rack 1, row5, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest1
+    description: "rack 2, row1, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest2
+    description: "rack 2, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: biometra_96_TEMP
+    description: "temp location for the biometra thermocyler"
     representations:
       pf400_piper:
     resource_template_name: nest_resource_template
