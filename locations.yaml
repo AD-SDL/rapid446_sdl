@@ -49,8 +49,8 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [874.61,53.888,109.608,-75.934,121.471,-33.220]
-      approach: [936.913,54.236,138.589,-105.263,121.483,-33.218]
+      location: [873.11,51.237,110.517,-73.542,130.100,-46.585]
+      approach: [943.039,50.771,142.464,-105.028,121.331,-46.560]
       plate_rotation: "wide"
       gripper_height_offset: 7
 
@@ -58,8 +58,8 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [874.52,22.108,110.869,-45.158,121.501,51.231]
-      approach: [948.840,-4.394,145.415,-53.199,121.501,51.233]
+      location: [873.11,33.743,113.334,-58.897,121.325,125.014]  # almost perfect, come back if there's time
+      approach: [962.560,20.230,145.041,-77.097,121.325,125.015]
       plate_rotation: "wide"
       gripper_height_offset: 7
 
@@ -67,7 +67,7 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [100.75,40.591,113.392,-65.575,121.547,-99.353]
+      location: [99.75,40.591,113.392,-65.575,121.547,-99.353]
       approach: [231.487,33.009,141.722,-86.417,121.594,-99.350]
       plate_rotation: "wide"
       gripper_height_offset: 7
@@ -76,8 +76,8 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [100.75,27.382,113.062,-52.039,121.618,91.142]
-      approach: [219.582,-2.543,157.544,-66.574,121.606,90.554]
+      location: [99.75,27.921,113.057,-52.499,121.331,93.964]
+      approach: [179.144,9.142,144.875,-65.540,121.331,93.969]
       plate_rotation: "wide"
       gripper_height_offset: 7
 
@@ -117,7 +117,7 @@ training:
     overrides:
       location: [960.642,6.591,335.589,-434.152,81.694,996.927]
       approach: [
-        [965.851,0.082,175.244,-176.552,70.498,498.99], 
+        [965.851,0.082,175.244,-176.552,70.498,498.99],
         [984.419,51.939,176.011,-177.954,81.635,909.825],
         [984.421,55.849,268.699,-225.750,81.629,910.072],
         [994.951,39.060,314.734,-443.241,81.659,919.615],
@@ -137,7 +137,7 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [70.963,20.353,225.456,-337.248,89.976,-29.231]
+      location: [71.963,20.353,225.456,-337.248,89.976,-29.231]
       approach: [138.435,67.644,213.07,-372.158,81.694,-29.247]
       plate_rotation: "narrow"
 
@@ -145,8 +145,8 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [866.575,-56.886,256.534,-291.124,90.029,327.368]
-      approach: [887.032,-57.594,213.360,-247.238,70.469,372.325]
+      location: [866.575,-52.074,255.234,-295.257,81.623,301.838]
+      approach: [883.576,-46.446,212.781,-258.431,81.623,301.837]
       plate_rotation: "narrow"
 
   - location_name: inheco_iris_2.1.inheco_carriage
@@ -393,6 +393,12 @@ locations:
     resource_template_name: nest_resource_template
 
   - location_name: rack2_row1_nest2
+    description: "rack 2, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest3
     description: "rack 2, row1, nest 2 pf400 accessible location"
     representations:
       pf400_piper:
