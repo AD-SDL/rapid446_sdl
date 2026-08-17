@@ -165,7 +165,7 @@ training:
       approach: [230.984,-2.727,223.47,-312.059,122.216,483.869]
       plate_rotation: "wide"
 
-  - location_name: sciclops_plankton.safe  # RECALIBRATE!
+  - location_name: sciclops_plankton.safe
     node_name: sciclops_plankton
     representation_template_name: sciclops_deck_location_template
     overrides:
@@ -206,7 +206,7 @@ training:
     representation_template_name: sciclops_deck_location_template
     overrides:
       joint_angles:
-        Z: -412.9313
+        Z: -413.9313
         R: 233.5482
         Y: 8.4956
         P: -9.9432
@@ -263,9 +263,9 @@ training:
     overrides:
       joint_angles:
         Z: -396.1
-        R: 190.8371
-        Y: 173.7506
-        P: 8.5511
+        R: 190.7047
+        Y: 172.5414
+        P: 9.233
       location_type: stack
       safe_approach_height: 0
 
