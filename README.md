@@ -1,6 +1,6 @@
 # rapid446_sdl
 
-Docker-compose deployment of the RAPID 446 self-driving lab on MADSci v0.8.
+Docker-compose deployment of the RAPID-446 self-driving lab on MADSci v0.8.
 Brings up seven managers (lab, event, experiment, resource, data, workcell,
 location) plus the seven node containers that live on the lab host
 (`grimm.cels.anl.gov`).

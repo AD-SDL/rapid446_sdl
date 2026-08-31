@@ -239,9 +239,9 @@ training:
     overrides:
       joint_angles:
         Z: -397.2875
-        R: 154.9535
-        Y: 173.7692
-        P: 10.1989
+        R: 154.8565
+        Y: 172.8019
+        P: 8.9773
       location_type: stack
       safe_approach_height: 0
 
