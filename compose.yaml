@@ -1,6 +1,15 @@
 name: rapid446_sdl
+
+# Unified entry point. Bring the lab up with:
+#   docker compose up -d
+# from the repo root.
+#
+# FOSS migration overlay (docker/compose.migration.yaml) is intentionally NOT
+# included by default — pull it in explicitly when running migrations:
+#   docker compose -f compose.yaml -f docker/compose.migration.yaml up -d \
+#     madsci_old_mongodb madsci_old_postgres madsci_old_redis madsci_old_minio
+
 include:
-  - path: docker/infra.compose.yaml
-    env_file: .env
-  - path: docker/managers.compose.yaml
-  - path: docker/batman_nodes.compose.yaml
+  - docker/compose.infra.yaml
+  - docker/compose.managers.yaml
+  - docker/grimm_nodes.compose.yaml

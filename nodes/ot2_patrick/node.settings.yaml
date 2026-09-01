@@ -1,0 +1,8 @@
+# ot2_patrick — Opentrons OT-2 (right) in RAPID 446
+# Committed defaults. Override locally via nodes/ot2_patrick/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: ot2_patrick
+node_url: http://146.137.240.20:2004/
+enable_registry_resolution: true
+ot2_ip: 169.254.86.133

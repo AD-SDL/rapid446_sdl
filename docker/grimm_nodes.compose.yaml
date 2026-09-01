@@ -1,0 +1,105 @@
+# Per-node container definitions for grimm.cels.anl.gov.
+# Ported from batman_nodes.compose.yaml as part of the v0.6 -> v0.8 migration:
+#  - Drop NODE_DEFINITION (definition files removed in v0.7).
+#  - Per-node config lives in ../nodes/<name>/node.settings.yaml (tracked)
+#    and ../nodes/<name>/node.env (gitignored, overrides/secrets only).
+#    MADSCI_SETTINGS_DIR points NodeConfig's walk-up discovery at the right
+#    subdir; the shared .env at the repo root is still picked up by walk-up.
+#  - Bind mounts use :Z for Fedora SELinux relabeling.
+
+x-service-template: &service-template
+  env_file:
+    - ../.env
+  network_mode: host
+  volumes:
+    - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci:/home/madsci/.madsci/:Z
+    - ${LOCAL_WORKSPACE_FOLDER:-../}nodes:/home/madsci/nodes:Z
+  restart: unless-stopped
+
+services:
+  sealer_sassy:
+    <<: *service-template
+    container_name: sealer_sassy
+    image: ghcr.io/ad-sdl/a4s_sealer_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/sealer_sassy
+    build:
+      context: ../../a4s_sealer_module
+      dockerfile: Dockerfile
+    privileged: true
+    devices:
+      - /dev/ttyUSB1:/dev/ttyUSB1
+
+  pf400_piper:
+    <<: *service-template
+    container_name: pf400_piper
+    image: ghcr.io/ad-sdl/pf400_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/pf400_piper
+    build:
+      context: ../../pf400_module
+      dockerfile: Dockerfile
+
+  peeler_penelope:
+    <<: *service-template
+    container_name: peeler_penelope
+    image: ghcr.io/ad-sdl/brooks_xpeel_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/peeler_penelope
+    build:
+      context: ../../brooks_xpeel_module
+      dockerfile: Dockerfile
+    privileged: true
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    command: python /home/madsci/brooks_xpeel_module/src/peeler_rest_node.py
+
+  ot2_spongebob:
+    <<: *service-template
+    container_name: ot2_spongebob
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/ot2_spongebob
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile
+
+  ot2_patrick:
+    <<: *service-template
+    container_name: ot2_patrick
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/ot2_patrick
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile
+
+  # separating the ot-flex into a different rest node
+  otflex_sandy:
+    <<: *service-template
+    container_name: otflex_sandy
+    image: ghcr.io/ad-sdl/ot2_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/otflex_sandy
+    build:
+      context: ../../ot2_module
+      dockerfile: Dockerfile
+    command: python ot2_module/src/otflex_rest_node.py --definition definitions/otflex_template.node.yaml
+
+  sciclops_plankton:
+    <<: *service-template
+    container_name: sciclops_plankton
+    image: ghcr.io/ad-sdl/sciclops_module
+    environment:
+      MADSCI_SETTINGS_DIR: /home/madsci/nodes/sciclops_plankton
+    build:
+      context: ../../sciclops_module
+      dockerfile: Dockerfile
+    privileged: true
+    # pyusb / libusb need raw access to the Hudson USB device (vendor 0x7513).
+    # Bind-mount the whole USB bus tree so device renumbering on reconnect
+    # doesn't require a compose edit.
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER:-../}.madsci:/home/madsci/.madsci/:Z
+      - ${LOCAL_WORKSPACE_FOLDER:-../}nodes:/home/madsci/nodes:Z
+      - /dev/bus/usb:/dev/bus/usb

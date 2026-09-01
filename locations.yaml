@@ -1,0 +1,405 @@
+# RAPID-446 MADSci - Location Configuration
+#
+# This file defines lab-level locations, location templates, and training
+# (cross-node representation additions). Node-intrinsic locations (e.g.,
+# liquid handler deck slots, plate reader carriage) are auto-created by
+# nodes on startup via their intrinsic_locations class variable.
+#
+# Format: LabLocationConfig (reconcilable living document)
+#   - representation_templates: lab-level representation templates
+#   - location_templates: reusable location blueprints
+#   - training: add node representations to existing locations
+#   - locations: lab-managed locations not owned by any node
+
+# Location templates: reusable blueprints for creating locations.
+# Roles map to representation templates; at instantiation time, node
+# bindings map roles to concrete node instance names.
+location_templates:
+  - template_name: nest_template
+    description: >-
+      A single deck location on the RAPID-446 workcell.
+    resource_template_name: nest_resource_template
+    representation_templates:
+      transfer_arm: pf400_deck_location_template
+    default_allow_transfers: true
+    tags:
+      - nest
+    version: "1.0.1"
+
+# Training: teach the robot arm how to access specific node-managed locations.
+# These add robotarm_1's representation to node-owned locations.
+training:
+  - location_name: peeler_penelope.peeler_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [119.930,-37.416,235.562,-289.868,81.653,-351.107]
+      approach: [214.332,-3.381,205.231,-293.590,81.700,-415.130]
+      plate_rotation: "narrow"
+
+  - location_name: sealer_sassy.sealer_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [916.021,5.482,226.518,-324.455,78.528,755.594]
+      approach: [972.111,43.095,208.298,-343.851,78.534,755.594]
+      plate_rotation: "narrow"
+
+  - location_name: ot2_spongebob.deck_nest_1
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [873.11,51.237,110.517,-73.542,130.100,-46.585]
+      approach: [943.039,50.771,142.464,-105.028,121.331,-46.560]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_spongebob.deck_nest_3
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [873.11,33.743,113.334,-58.897,121.325,125.014]  # almost perfect, come back if there's time
+      approach: [962.560,20.230,145.041,-77.097,121.325,125.015]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_patrick.deck_nest_1
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [99.75,40.591,113.392,-65.575,121.547,-99.353]
+      approach: [231.487,33.009,141.722,-86.417,121.594,-99.350]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_patrick.deck_nest_3
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [99.75,27.921,113.057,-52.499,121.331,93.964]
+      approach: [179.144,9.142,144.875,-65.540,121.331,93.969]
+      plate_rotation: "wide"
+      gripper_height_offset: 7
+
+  - location_name: ot2_patrick.deck_nest_4_temp_block
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [186.151,53.536,90.400,-55.346,122.157,-76.133]
+      approach: [234.544,41.052,144.171,-96.633,122.180,-76.124]
+      plate_rotation: "wide"
+
+  - location_name: ot2_patrick.deck_nest_6_temp_block
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [186.151,40.833,90.785,-43.327,122.175,100.824]
+      approach: [252.433,-0.511,162.754,-73.956,122.180,100.823]
+      plate_rotation: "wide"
+
+  - location_name: otflex_sandy.deck_nest_A4
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [962.006,16.119,315.599,-423.804,81.653,919.750]
+      approach: [
+        [965.851,0.082,175.244,-176.552,70.498,498.99],
+        [984.419,51.939,176.011,-177.954,81.635,909.825],
+        [984.421,55.849,268.699,-225.750,81.629,910.072],
+        [994.951,39.060,314.734,-443.241,81.659,919.615],
+        [992.064,29.225,324.405,-445.723,81.682,919.750]
+      ]
+      plate_rotation: "narrow"
+
+  - location_name: otflex_sandy.deck_nest_B4
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [960.642,6.591,335.589,-434.152,81.694,996.927]
+      approach: [
+        [965.851,0.082,175.244,-176.552,70.498,498.99],
+        [984.419,51.939,176.011,-177.954,81.635,909.825],
+        [984.421,55.849,268.699,-225.750,81.629,910.072],
+        [994.951,39.060,314.734,-443.241,81.659,919.615],
+        [985.422,15.318,346.697,-453.993,81.729,996.927]
+      ]
+      plate_rotation: "narrow"
+
+  - location_name: hidex_geraldine.hidex_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [868.713,-8.417,227.564,-311.050,81.618,499.220]
+      approach: [938.091,30.175,200.954,-323.036,81.647,499.220]
+      plate_rotation: "narrow"
+
+  - location_name: bmg_billy.bmg_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [70.963,20.353,225.456,-337.248,89.976,-29.231]
+      approach: [138.435,67.644,213.07,-372.158,81.694,-29.247]
+      plate_rotation: "narrow"
+
+  - location_name: inheco_irene_2.0.inheco_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [866.575,-52.116,255.357,-295.340,89.976,301.830]
+      approach: [883.576,-46.446,212.781,-258.431,81.623,301.837]
+      plate_rotation: "narrow"
+
+  - location_name: inheco_iris_2.1.inheco_carriage
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [1005.259,-53.486,255.676,-293.796,81.664,308.020]
+      approach: [1086.699,-47.353,223.353,-267.603,81.664,308.019]
+      plate_rotation: "narrow"
+
+  - location_name: biometra_beuford.biometra_nest
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [138.632,-25.921,254.218,-319.617,122.169,483.86]
+      approach: [230.984,-2.727,223.47,-312.059,122.216,483.869]
+      plate_rotation: "wide"
+
+  - location_name: sciclops_plankton.safe
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: 23.5188
+        R: 109.2741
+        Y: 32.7484
+        P: 98.2955
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.lid_nest_1
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -389.1938
+        R: 172.5865
+        Y: 26.1689
+        P: 10.5114
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.lid_nest_2
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -389.1938
+        R: 204.9335
+        Y: 26.1689
+        P: 10.1989
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.exchange
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -413.9313
+        R: 233.5482
+        Y: 8.4956
+        P: -9.9432
+      location_type: nest
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.exchange
+    node_name: pf400_piper
+    representation_template_name: pf400_deck_location_template
+    overrides:
+      location: [912.67,-4.761,237.213,-316.304,125.012,-740.097]
+      approach: [985.793,22.995,211.479,-318.329,125.012,-740.099]
+      plate_rotation: "wide"
+
+  - location_name: sciclops_plankton.stack_1
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.1688
+        R: 136.95
+        Y: 172.5042
+        P: 8.8352
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_2
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.2875
+        R: 154.8565
+        Y: 172.8019
+        P: 8.9773
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_3
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -397.3563
+        R: 172.7841
+        Y: 173.577
+        P: 9.446
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_4
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -396.1
+        R: 190.7047
+        Y: 172.5414
+        P: 9.233
+      location_type: stack
+      safe_approach_height: 0
+
+  - location_name: sciclops_plankton.stack_5
+    node_name: sciclops_plankton
+    representation_template_name: sciclops_deck_location_template
+    overrides:
+      joint_angles:
+        Z: -394.4875
+        R: 208.7541
+        Y: 173.7444
+        P: 9.7159
+      location_type: stack
+      safe_approach_height: 0
+
+
+# Lab-managed locations (not owned by any node)
+locations:
+  - location_name: exchange_wide
+    description: "Exchange and rotation deck for the RAPID-446 Workcell, wide orientation."
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: exchange_narrow
+    description: "Exchange and rotation deck for the RAPID-446 Workcell, narrow orientation."
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row1_nest1
+    description: "rack 1, row1, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row1_nest2
+    description: "rack 1, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row1_nest3
+    description: "rack 1, row1, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest1
+    description: "rack 1, row2, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest2
+    description: "rack 1, row2, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row2_nest3
+    description: "rack 1, row2, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest1
+    description: "rack 1, row3, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest2
+    description: "rack 1, row3, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row3_nest3
+    description: "rack 1, row3, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest1
+    description: "rack 1, row4, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest2
+    description: "rack 1, row4, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row4_nest3
+    description: "rack 1, row4, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest1
+    description: "rack 1, row5, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest2
+    description: "rack 1, row5, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack1_row5_nest3
+    description: "rack 1, row5, nest 3 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest1
+    description: "rack 2, row1, nest 1 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest2
+    description: "rack 2, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template
+
+  - location_name: rack2_row1_nest3
+    description: "rack 2, row1, nest 2 pf400 accessible location"
+    representations:
+      pf400_piper:
+    resource_template_name: nest_resource_template

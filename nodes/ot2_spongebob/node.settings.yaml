@@ -1,0 +1,8 @@
+# ot2_spongebob — Opentrons OT-2 (left) in RAPID 446
+# Committed defaults. Override locally via nodes/ot2_spongebob/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: ot2_spongebob
+node_url: http://146.137.240.20:2003/
+enable_registry_resolution: true
+ot2_ip: 146.137.240.106

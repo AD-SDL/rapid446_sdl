@@ -1,0 +1,8 @@
+# sealer_sassy — A4S Sealer in RAPID 446
+# Committed defaults. Override locally via nodes/sealer_sassy/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: sealer_sassy
+node_url: http://146.137.240.20:2000/
+enable_registry_resolution: true
+device_path: /dev/ttyUSB0

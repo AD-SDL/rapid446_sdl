@@ -285,6 +285,11 @@ logs/
 # Environment file for Docker Compose
 .env
 
+# Per-node override files (nodes/<name>/node.env). Gitignored by design —
+# they hold local overrides and any future secrets; committed defaults live
+# in the tracked nodes/<name>/node.settings.yaml. See README.md.
+nodes/*/node.env
+
 # ignore redis dump file
 *.rdb
 
@@ -303,6 +308,10 @@ test_experiment/
 # Output data
 .wei/
 .madsci/
+
+# v0.6 -> v0.8 migration artifacts: pre-migration backups, convert tool output,
+# and FOSS-migration logs. Kept on disk for rollback but never tracked.
+.migration_backups/
 
 #node modules
 **/node_modules
