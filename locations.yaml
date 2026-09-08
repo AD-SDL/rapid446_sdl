@@ -153,8 +153,8 @@ training:
     node_name: pf400_piper
     representation_template_name: pf400_deck_location_template
     overrides:
-      location: [1005.259,-53.486,255.676,-293.796,81.664,308.020]
-      approach: [1086.699,-47.353,223.353,-267.603,81.664,308.019]
+      location: [870.998,29.731,97.131,-35.747,89.982,682.171]
+      approach: [919.567,-23.136,121.874,-7.572,81.905,541.362]
       plate_rotation: "narrow"
 
   - location_name: biometra_beuford.biometra_nest
