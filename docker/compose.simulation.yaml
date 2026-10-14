@@ -117,3 +117,40 @@ services:
       - sim_location_manager
       - sim_data_manager
       - sim_experiment_manager
+
+  # ---------------- nodes ----------------
+  # Only pf400_module ships a Dockerfile and a real simulation mode today, so it is the
+  # only node here. The rest are listed in settings.simulation.yaml and the workcell
+  # manager will report them unreachable until they are added.
+  #
+  # To add one: it needs a Dockerfile, and it needs either its own simulation flag or an
+  # accepted startup failure. A node without a device still publishes its resource
+  # templates and its intrinsic locations before it reaches for hardware, which is most
+  # of what the site description needs, so an accepted failure is genuinely useful.
+  # Checked in source: inheco, sealer and biometra all publish first. bmg does not, it
+  # probes its sidecar and creates nothing if that is down.
+  #
+  # Until then those nodes can be run from source against this stack:
+  #   RESOURCE_SERVER_URL=http://localhost:9004 LOCATION_SERVER_URL=http://localhost:9006 \
+  #   NODE_NAME=inheco_iris_2.1 NODE_URL=http://0.0.0.0:2111 \
+  #   python -m inheco_incubator_rest_node
+
+  sim_pf400_piper:
+    container_name: rapid446sim_pf400_piper
+    image: ghcr.io/ad-sdl/pf400_module:latest
+    network_mode: host
+    environment:
+      - USER_ID=${USER_ID:-1000}
+      - GROUP_ID=${GROUP_ID:-1000}
+      - MADSCI_SETTINGS_DIR=/home/madsci/nodes_sim/pf400_piper
+      - RESOURCE_SERVER_URL=http://localhost:9004/
+      - LOCATION_SERVER_URL=http://localhost:9006/
+      - EVENT_SERVER_URL=http://localhost:9001/
+      - NODE_SIMULATION=true
+    volumes:
+      - ../nodes_sim:/home/madsci/nodes_sim:Z
+      - ../.madsci_sim:/home/madsci/.madsci:Z
+    depends_on:
+      - sim_resource_manager
+      - sim_location_manager
+    restart: unless-stopped
