@@ -7,12 +7,21 @@ x-sim-service: &sim-service
   environment:
     - USER_ID=${USER_ID:-1000}
     - GROUP_ID=${GROUP_ID:-1000}
-    # Managers read settings.simulation.yaml, never settings.yaml. Getting this wrong
-    # points a manager at the real lab.
-    - MADSCI_SETTINGS_FILE=settings.simulation.yaml
+    # The backing stores, as environment variables. This is how the stack addresses
+    # them; the per-manager *_db_url keys in settings are not the mechanism. Both
+    # point at the simulation infra below, never at whatever sits on the default ports.
+    - DOCUMENT_DB_URL=mongodb://madsci:madsci@localhost:27117/
+    - RESOURCE_DB_URL=postgresql://madsci:madsci@localhost:5634/resources_sim
+    - WORKCELL_REDIS_PORT=6479
   network_mode: host
   volumes:
     - ..:/home/madsci/rapid446_sdl:Z
+    # The seal. MADSci finds its config by walking up for settings.yaml, and there is
+    # no environment variable that redirects it, so the simulation settings are mounted
+    # OVER that name. Inside these containers the real settings.yaml does not exist.
+    # An earlier version set MADSCI_SETTINGS_FILE instead, which MADSci ignores: every
+    # manager read the real file and tried to bind a lab address.
+    - ../settings.simulation.yaml:/home/madsci/rapid446_sdl/settings.yaml:ro
     - ../.madsci_sim:/home/madsci/.madsci:Z
   working_dir: /home/madsci/rapid446_sdl
   restart: unless-stopped
@@ -27,7 +36,7 @@ services:
       - POSTGRES_PASSWORD=madsci
       - POSTGRES_DB=resources_sim
     ports:
-      - "5534:5432"
+      - "5634:5432"
     restart: unless-stopped
 
   sim_documentdb:
@@ -38,14 +47,17 @@ services:
       - POSTGRES_PASSWORD=madsci
       - POSTGRES_DB=postgres
     ports:
-      - "5533:5432"
+      - "5633:5432"
     restart: unless-stopped
 
   sim_ferretdb:
     container_name: rapid446sim_ferretdb
     image: ghcr.io/ferretdb/ferretdb:2
     environment:
-      - FERRETDB_POSTGRESQL_URL=postgres://madsci:madsci@localhost:5533/postgres
+      - FERRETDB_POSTGRESQL_URL=postgres://madsci:madsci@localhost:5633/postgres
+      # 27017 belongs to whatever MADSci stack is already on this machine.
+      - FERRETDB_LISTEN_ADDR=:27117
+      - FERRETDB_DEBUG_ADDR=:8188
     network_mode: host
     depends_on:
       - sim_documentdb

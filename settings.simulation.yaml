@@ -46,7 +46,7 @@ data_database_name: madsci_data_sim
 # left the other unchanged and invisible to it.
 resource_server_url: http://localhost:9004/
 resource_manager_name: Simulation ResourceManager
-resource_db_url: postgresql://madsci:madsci@localhost:5534/resources_sim
+resource_db_url: postgresql://madsci:madsci@localhost:5634/resources_sim
 resource_default_templates: []
 
 # --- Workcell ---
@@ -68,6 +68,17 @@ workcell_nodes:
   inheco_irene_2.0:    http://localhost:2110/
   inheco_iris_2.1:     http://localhost:2111/
   biometra_beuford_96: http://localhost:2112/
+
+# --- Backing stores ---
+# The sim stack runs its own FerretDB and Valkey on non-default ports, so these must
+# be stated. Left unset, every manager would quietly fall back to localhost:27017 and
+# localhost:6379, which are the example lab's, and the sandbox would not be sealed.
+event_db_url: mongodb://madsci:madsci@localhost:27117
+data_db_url: mongodb://madsci:madsci@localhost:27117
+experiment_db_url: mongodb://madsci:madsci@localhost:27117
+workcell_mongo_url: mongodb://madsci:madsci@localhost:27117
+workcell_redis_host: localhost
+workcell_redis_port: 6479
 
 # --- Location ---
 location_server_url: http://localhost:9006/
