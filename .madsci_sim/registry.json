@@ -1,7 +1,7 @@
 {
   "version": 1,
   "created_at": "2026-10-14T03:41:06.488843Z",
-  "updated_at": "2026-10-14T04:08:06.603318Z",
+  "updated_at": "2026-10-14T06:18:49.776476Z",
   "entries": {
     "Default LabManager": {
       "id": "01M4W7ZQHRNY24KXXYDVDH7VQ4",
@@ -98,7 +98,7 @@
       "id": "01M4W82H3YMF90K1YS4S2SCJBX",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.206797Z",
-      "last_seen": "2026-10-14T04:07:58.421893Z",
+      "last_seen": "2026-10-14T06:18:42.046440Z",
       "metadata": {
         "manager_class": "LabManager"
       },
@@ -107,8 +107,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W84YJH12BY28CY96R9HMBJ",
         "acquired_at": "2026-10-14T03:43:57.522716Z",
-        "heartbeat_at": "2026-10-14T04:07:58.421893Z",
-        "expires_at": "2026-10-14T04:08:28.421893Z"
+        "heartbeat_at": "2026-10-14T06:18:42.046440Z",
+        "expires_at": "2026-10-14T06:19:12.046440Z"
       },
       "workcell_id": null
     },
@@ -116,7 +116,7 @@
       "id": "01M4W82H9RWK0EM9V0SVC3ZDW5",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.392701Z",
-      "last_seen": "2026-10-14T04:07:58.472393Z",
+      "last_seen": "2026-10-14T06:18:42.100419Z",
       "metadata": {
         "manager_class": "EventManager"
       },
@@ -125,8 +125,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W84YR7FMWZP30KAVCS7NRE",
         "acquired_at": "2026-10-14T03:43:57.705014Z",
-        "heartbeat_at": "2026-10-14T04:07:58.472393Z",
-        "expires_at": "2026-10-14T04:08:28.472393Z"
+        "heartbeat_at": "2026-10-14T06:18:42.100419Z",
+        "expires_at": "2026-10-14T06:19:12.100419Z"
       },
       "workcell_id": null
     },
@@ -134,17 +134,17 @@
       "id": "01M4W82HAM5V7EKTFZAPQS09J7",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.420502Z",
-      "last_seen": "2026-10-14T04:07:58.590134Z",
+      "last_seen": "2026-10-14T06:18:49.373996Z",
       "metadata": {
         "manager_class": "ResourceManager"
       },
       "lock": {
         "holder_pid": 1,
         "holder_host": "lima-rancher-desktop",
-        "holder_instance": "01M4W84YR3A6XYVQ2FMGRG2GCZ",
-        "acquired_at": "2026-10-14T03:43:57.701038Z",
-        "heartbeat_at": "2026-10-14T04:07:58.590134Z",
-        "expires_at": "2026-10-14T04:08:28.590134Z"
+        "holder_instance": "01M4WGRWEDSK0QNNYJPWYMCZHB",
+        "acquired_at": "2026-10-14T06:14:39.310744Z",
+        "heartbeat_at": "2026-10-14T06:18:49.373996Z",
+        "expires_at": "2026-10-14T06:19:19.373996Z"
       },
       "workcell_id": null
     },
@@ -152,7 +152,7 @@
       "id": "01M4W82HJHJA9MECWP0805H3C6",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.673016Z",
-      "last_seen": "2026-10-14T04:07:58.662171Z",
+      "last_seen": "2026-10-14T06:18:42.160575Z",
       "metadata": {
         "manager_class": "WorkcellManager"
       },
@@ -161,8 +161,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W84Z9BT5947872QBYYSCEB",
         "acquired_at": "2026-10-14T03:43:58.252896Z",
-        "heartbeat_at": "2026-10-14T04:07:58.662171Z",
-        "expires_at": "2026-10-14T04:08:28.662171Z"
+        "heartbeat_at": "2026-10-14T06:18:42.160575Z",
+        "expires_at": "2026-10-14T06:19:12.160575Z"
       },
       "workcell_id": null
     },
@@ -170,17 +170,17 @@
       "id": "01M4W82HJX8BK6PDCZQQ12QBX7",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.685721Z",
-      "last_seen": "2026-10-14T04:07:58.467851Z",
+      "last_seen": "2026-10-14T06:18:49.776442Z",
       "metadata": {
         "manager_class": "LocationManager"
       },
       "lock": {
         "holder_pid": 1,
         "holder_host": "lima-rancher-desktop",
-        "holder_instance": "01M4W84Z2GR4ES2JKGN1BP4837",
-        "acquired_at": "2026-10-14T03:43:58.034010Z",
-        "heartbeat_at": "2026-10-14T04:07:58.467851Z",
-        "expires_at": "2026-10-14T04:08:28.467851Z"
+        "holder_instance": "01M4WGRWSTAEXZ6NH07VDR7E3C",
+        "acquired_at": "2026-10-14T06:14:39.676780Z",
+        "heartbeat_at": "2026-10-14T06:18:49.776442Z",
+        "expires_at": "2026-10-14T06:19:19.776442Z"
       },
       "workcell_id": null
     },
@@ -188,7 +188,7 @@
       "id": "01M4W82HPNP0MA9DE5M986QMKY",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.805312Z",
-      "last_seen": "2026-10-14T04:07:58.423841Z",
+      "last_seen": "2026-10-14T06:18:42.155309Z",
       "metadata": {
         "manager_class": "ExperimentManager"
       },
@@ -197,8 +197,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W84Z4M9VCVKZAYRJ45HZTV",
         "acquired_at": "2026-10-14T03:43:58.101896Z",
-        "heartbeat_at": "2026-10-14T04:07:58.423841Z",
-        "expires_at": "2026-10-14T04:08:28.423841Z"
+        "heartbeat_at": "2026-10-14T06:18:42.155309Z",
+        "expires_at": "2026-10-14T06:19:12.155309Z"
       },
       "workcell_id": null
     },
@@ -206,7 +206,7 @@
       "id": "01M4W82HPZ0108V7XYXF301GY8",
       "component_type": "manager",
       "created_at": "2026-10-14T03:42:38.815627Z",
-      "last_seen": "2026-10-14T04:07:58.531855Z",
+      "last_seen": "2026-10-14T06:18:42.052820Z",
       "metadata": {
         "manager_class": "DataManager"
       },
@@ -215,8 +215,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W84YPHV19PVD4DAGK552EM",
         "acquired_at": "2026-10-14T03:43:57.651139Z",
-        "heartbeat_at": "2026-10-14T04:07:58.531855Z",
-        "expires_at": "2026-10-14T04:08:28.531855Z"
+        "heartbeat_at": "2026-10-14T06:18:42.052820Z",
+        "expires_at": "2026-10-14T06:19:12.052820Z"
       },
       "workcell_id": null
     },
@@ -224,7 +224,7 @@
       "id": "01M4W8Z5BVTWP85YT1AQRVKY6Q",
       "component_type": "node",
       "created_at": "2026-10-14T03:58:16.443985Z",
-      "last_seen": "2026-10-14T04:08:06.603286Z",
+      "last_seen": "2026-10-14T06:18:48.672274Z",
       "metadata": {
         "module_name": "pf400_node"
       },
@@ -233,8 +233,8 @@
         "holder_host": "lima-rancher-desktop",
         "holder_instance": "01M4W8Z5BS7M5FKEPTW55W70R6",
         "acquired_at": "2026-10-14T03:58:16.443990Z",
-        "heartbeat_at": "2026-10-14T04:08:06.603286Z",
-        "expires_at": "2026-10-14T04:08:36.603286Z"
+        "heartbeat_at": "2026-10-14T06:18:48.672274Z",
+        "expires_at": "2026-10-14T06:19:18.672274Z"
       },
       "workcell_id": null
     }

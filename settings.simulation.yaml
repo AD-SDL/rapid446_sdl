@@ -47,7 +47,25 @@ data_database_name: madsci_data_sim
 resource_server_url: http://localhost:9004/
 resource_manager_name: Simulation ResourceManager
 resource_db_url: postgresql://madsci:madsci@localhost:5634/resources_sim
-resource_default_templates: []
+
+# locations.yaml points all 20 lab-managed locations at 'nest_resource_template' and
+# nothing in the repository defines it, so every one of them starts with no resource
+# attached and cannot hold a plate. Occupancy checks then have nothing to read.
+# Defined here so the simulation lab is complete; it belongs in settings.yaml too.
+resource_default_templates:
+  - template_name: nest_resource_template
+    description: A single plate nest on the RAPID 446 deck. Holds one piece of labware.
+    base_resource:
+      resource_name: nest_resource_template
+      resource_class: deck_slot
+      base_type: slot
+      resource_description: Plate nest holding one piece of ANSI/SLAS labware
+      capacity: 1
+    required_overrides:
+      - resource_name
+    tags:
+      - nest
+      - rapid446
 
 # --- Workcell ---
 # Every URL below is a LOCAL simulation node. None is the real lab.
@@ -83,3 +101,21 @@ workcell_redis_port: 6479
 # --- Location ---
 location_server_url: http://localhost:9006/
 location_manager_name: RAPID 446 Location Manager (Simulation)
+
+# The transfer graph is built from these, NOT from locations having representations.
+# transfer_planner._build_transfer_graph returns an empty graph immediately when
+# transfer_capabilities is unset, which is why 446 published 20 locations and no edges:
+# a planner was handed places and no roads. pf400_piper already exposes a transfer
+# action taking source and target, so this is only a declaration.
+#
+# cost_weight is a routing preference, not a measurement. 1.0 is a placeholder.
+# TODO, Casey Stone or Doga Ozgulbas to set a real relative cost.
+location_transfer_capabilities:
+  transfer_templates:
+    - node_name: pf400_piper
+      action: transfer
+      source_argument_name: source
+      target_argument_name: target
+      cost_weight: 1.0
+      additional_args: {}
+      additional_location_args: {}
