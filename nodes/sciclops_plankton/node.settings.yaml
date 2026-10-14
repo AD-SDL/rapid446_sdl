@@ -1,0 +1,7 @@
+# sciclops_plankton — Hudson SciClops plate hotel in RAPID 446
+# Committed defaults. Override locally via nodes/sciclops_plankton/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: sciclops_plankton
+node_url: http://146.137.240.20:3005/
+enable_registry_resolution: true

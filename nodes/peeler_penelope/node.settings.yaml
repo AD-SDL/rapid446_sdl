@@ -1,0 +1,8 @@
+# peeler_penelope — Brooks Xpeel peeler in RAPID 446
+# Committed defaults. Override locally via nodes/peeler_penelope/node.env
+# (gitignored) or NODE_* env vars. See ../../README.md for precedence.
+
+node_name: peeler_penelope
+node_url: http://146.137.240.20:2002/
+enable_registry_resolution: true
+device_port: /dev/ttyUSB1

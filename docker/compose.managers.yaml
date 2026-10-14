@@ -1,0 +1,79 @@
+# MADSci RAPID 446 — manager services (v0.8).
+# Brings up: lab/event/experiment/resource/data/location/workcell managers.
+# Included from the repo-root compose.yaml; infra is included alongside this
+# file there, not from here.
+
+x-madsci-service: &madsci-service
+  image: ghcr.io/ad-sdl/madsci:latest
+  environment:
+    - USER_ID=${USER_ID:-1000}
+    - GROUP_ID=${GROUP_ID:-1000}
+  network_mode: host
+  env_file:
+    - ../.env
+  volumes:
+    - ..:/home/madsci/rapid446_sdl:Z
+    - ../.madsci:/home/madsci/.madsci:Z
+  working_dir: /home/madsci/rapid446_sdl
+  restart: unless-stopped
+
+services:
+  lab_manager:
+    <<: *madsci-service
+    container_name: lab_manager
+    image: ghcr.io/ad-sdl/madsci_dashboard:latest
+    command: python -m madsci.squid.lab_server
+    depends_on:
+      - event_manager
+
+  event_manager:
+    <<: *madsci-service
+    container_name: event_manager
+    command: python -m madsci.event_manager.event_server
+    depends_on:
+      - madsci_ferretdb
+
+  experiment_manager:
+    <<: *madsci-service
+    container_name: experiment_manager
+    command: python -m madsci.experiment_manager.experiment_server
+    depends_on:
+      - madsci_ferretdb
+      - lab_manager
+
+  resource_manager:
+    <<: *madsci-service
+    container_name: resource_manager
+    command: python -m madsci.resource_manager.resource_server
+    depends_on:
+      - madsci_postgres_resources
+      - event_manager
+
+  data_manager:
+    <<: *madsci-service
+    container_name: data_manager
+    command: python -m madsci.data_manager.data_server
+    depends_on:
+      - madsci_ferretdb
+      - event_manager
+
+  location_manager:
+    <<: *madsci-service
+    container_name: location_manager
+    command: python -m madsci.location_manager.location_server
+    depends_on:
+      - madsci_valkey
+      - madsci_ferretdb
+      - event_manager
+      - resource_manager
+
+  workcell_manager:
+    <<: *madsci-service
+    container_name: workcell_manager
+    command: python -m madsci.workcell_manager.workcell_server
+    depends_on:
+      - madsci_valkey
+      - madsci_ferretdb
+      - resource_manager
+      - event_manager
+      - location_manager
