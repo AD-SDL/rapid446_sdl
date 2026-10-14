@@ -1,0 +1,33 @@
+name: rapid446_simulation
+
+# RAPID 446, simulated. A sealed copy of the lab with no path to any real device.
+#
+#   docker compose -f compose.simulation.yaml up -d
+#
+# WHAT THIS IS FOR
+# An agent validates a workflow here while the physical lab runs an experiment.
+# Nodes create their resource templates and their intrinsic locations before they
+# reach for hardware, so a node with no device still publishes its contribution to
+# the site description. Verified 2026-10-13: an Inheco node with no instrument
+# registered inheco_iris_2.1.inheco_carriage and its nest resource, then errored.
+#
+# WHAT IS DIFFERENT FROM THE REAL LAB
+#   managers   ports 9000-9006 instead of 8000-8006, and every database name ends _sim
+#   infra      ports 5533/5534/27117/6479 instead of 5432/5434/27017/6379
+#   nodes      localhost 2101-2112, never a lab address
+#   settings   settings.simulation.yaml, never settings.yaml
+#
+# SCOPE: this file brings up infra and the seven managers. It does NOT yet start any
+# node. settings.simulation.yaml already registers all twelve at localhost 2101-2112,
+# so the workcell manager will look for them and find nothing until they are added.
+# That is the next piece of work, and it is deliberate: only pf400_module has a real
+# simulation mode today, and its compose lives in its own repo. The others will need
+# either the same flag or an accepted startup failure.
+#
+# What a node without a device still gives you: it publishes its resource templates
+# and its intrinsic locations BEFORE reaching for hardware, then errors. Checked in
+# source for inheco, sealer and biometra. bmg is the exception, it probes its sidecar
+# first and creates nothing if that is down.
+
+include:
+  - docker/compose.simulation.yaml

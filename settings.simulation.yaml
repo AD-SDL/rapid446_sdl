@@ -1,0 +1,74 @@
+# RAPID 446 — SIMULATION settings.
+#
+# A complete, sealed copy of the lab with no connection to any real device and no
+# connection to any real manager. Used to validate a workflow while the physical lab
+# is busy running an experiment.
+#
+# SAFETY: no address in this file points at the real lab. Every manager is on
+# localhost and every node is a local simulation node. The real lab addresses are in
+# settings.yaml and deliberately appear nowhere here, not even in a comment, so that
+# the check below stays meaningful. Run it before every deploy:
+#
+#   grep -oE '[a-z0-9.-]+\.anl\.gov|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' settings.simulation.yaml
+#
+# It must print nothing. Anything it prints is a route out of the sandbox and into
+# somebody's running experiment.
+#
+# Port scheme: the real lab uses 8000-8006 for managers and 2000-3008 for nodes.
+# Simulation adds 1000 to the manager ports and uses 2100+ for nodes, so both can
+# run on one machine without collision.
+#
+#   docker compose -f compose.simulation.yaml up
+
+# --- Lab ---
+lab_server_url: http://localhost:9000/
+lab_manager_name: Simulation LabManager
+
+# --- Event ---
+event_server_url: http://localhost:9001/
+event_manager_name: Simulation EventManager
+event_database_name: madsci_events_sim
+event_alert_level: 40
+
+# --- Experiment ---
+experiment_server_url: http://localhost:9002/
+experiment_manager_name: Simulation ExperimentManager
+experiment_database_name: experiments_sim
+
+# --- Data ---
+data_server_url: http://localhost:9003/
+data_manager_name: Simulation DataManager
+data_database_name: madsci_data_sim
+
+# --- Resource ---
+# A separate database is what makes this sandbox safe. Two resource managers with
+# different db_url values are fully isolated: verified on 2026-10-08, a write to one
+# left the other unchanged and invisible to it.
+resource_server_url: http://localhost:9004/
+resource_manager_name: Simulation ResourceManager
+resource_db_url: postgresql://madsci:madsci@localhost:5534/resources_sim
+resource_default_templates: []
+
+# --- Workcell ---
+# Every URL below is a LOCAL simulation node. None is the real lab.
+workcell_server_url: http://localhost:9005/
+workcell_manager_name: rapid446_workcell_simulation
+workcell_database_name: workcells_sim
+workcell_node_update_interval: 3.0
+workcell_nodes:
+  pf400_piper:         http://localhost:2101/
+  ot2_spongebob:       http://localhost:2102/
+  ot2_patrick:         http://localhost:2103/
+  otflex_sandy:        http://localhost:2104/
+  peeler_penelope:     http://localhost:2105/
+  sealer_sassy:        http://localhost:2106/
+  sciclops_plankton:   http://localhost:2107/
+  bmg_billy:           http://localhost:2108/
+  hidex_geraldine:     http://localhost:2109/
+  inheco_irene_2.0:    http://localhost:2110/
+  inheco_iris_2.1:     http://localhost:2111/
+  biometra_beuford_96: http://localhost:2112/
+
+# --- Location ---
+location_server_url: http://localhost:9006/
+location_manager_name: RAPID 446 Location Manager (Simulation)

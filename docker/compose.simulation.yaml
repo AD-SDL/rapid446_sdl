@@ -1,0 +1,107 @@
+# Simulation infra, managers and nodes for RAPID 446. Self contained: it shares no
+# container, no port and no database with the real lab or with any other MADSci stack
+# on the machine.
+
+x-sim-service: &sim-service
+  image: ghcr.io/ad-sdl/madsci:latest
+  environment:
+    - USER_ID=${USER_ID:-1000}
+    - GROUP_ID=${GROUP_ID:-1000}
+    # Managers read settings.simulation.yaml, never settings.yaml. Getting this wrong
+    # points a manager at the real lab.
+    - MADSCI_SETTINGS_FILE=settings.simulation.yaml
+  network_mode: host
+  volumes:
+    - ..:/home/madsci/rapid446_sdl:Z
+    - ../.madsci_sim:/home/madsci/.madsci:Z
+  working_dir: /home/madsci/rapid446_sdl
+  restart: unless-stopped
+
+services:
+  # ---------------- infra ----------------
+  sim_postgres:
+    container_name: rapid446sim_postgres
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=madsci
+      - POSTGRES_PASSWORD=madsci
+      - POSTGRES_DB=resources_sim
+    ports:
+      - "5534:5432"
+    restart: unless-stopped
+
+  sim_documentdb:
+    container_name: rapid446sim_documentdb
+    image: ghcr.io/ferretdb/postgres-documentdb-dev:17-ferretdb
+    environment:
+      - POSTGRES_USER=madsci
+      - POSTGRES_PASSWORD=madsci
+      - POSTGRES_DB=postgres
+    ports:
+      - "5533:5432"
+    restart: unless-stopped
+
+  sim_ferretdb:
+    container_name: rapid446sim_ferretdb
+    image: ghcr.io/ferretdb/ferretdb:2
+    environment:
+      - FERRETDB_POSTGRESQL_URL=postgres://madsci:madsci@localhost:5533/postgres
+    network_mode: host
+    depends_on:
+      - sim_documentdb
+    restart: unless-stopped
+
+  sim_valkey:
+    container_name: rapid446sim_valkey
+    image: valkey/valkey:8
+    command: valkey-server --port 6479
+    network_mode: host
+    restart: unless-stopped
+
+  # ---------------- managers ----------------
+  sim_event_manager:
+    <<: *sim-service
+    container_name: rapid446sim_event_manager
+    command: python -m madsci.event_manager.event_server
+    depends_on: [sim_ferretdb]
+
+  sim_lab_manager:
+    <<: *sim-service
+    container_name: rapid446sim_lab_manager
+    image: ghcr.io/ad-sdl/madsci_dashboard:latest
+    command: python -m madsci.squid.lab_server
+    depends_on: [sim_event_manager]
+
+  sim_experiment_manager:
+    <<: *sim-service
+    container_name: rapid446sim_experiment_manager
+    command: python -m madsci.experiment_manager.experiment_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_data_manager:
+    <<: *sim-service
+    container_name: rapid446sim_data_manager
+    command: python -m madsci.data_manager.data_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_resource_manager:
+    <<: *sim-service
+    container_name: rapid446sim_resource_manager
+    command: python -m madsci.resource_manager.resource_server
+    depends_on: [sim_postgres, sim_event_manager]
+
+  sim_location_manager:
+    <<: *sim-service
+    container_name: rapid446sim_location_manager
+    command: python -m madsci.location_manager.location_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_workcell_manager:
+    <<: *sim-service
+    container_name: rapid446sim_workcell_manager
+    command: python -m madsci.workcell_manager.workcell_server
+    depends_on:
+      - sim_resource_manager
+      - sim_location_manager
+      - sim_data_manager
+      - sim_experiment_manager
