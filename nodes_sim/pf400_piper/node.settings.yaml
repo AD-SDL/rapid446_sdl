@@ -1,0 +1,4 @@
+# PF400 in simulation. No telnet connection is opened and no command reaches an arm.
+node_name: pf400_piper
+node_url: http://0.0.0.0:2101
+simulation: true

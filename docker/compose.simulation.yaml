@@ -1,0 +1,156 @@
+# Simulation infra, managers and nodes for RAPID 446. Self contained: it shares no
+# container, no port and no database with the real lab or with any other MADSci stack
+# on the machine.
+
+x-sim-service: &sim-service
+  image: ghcr.io/ad-sdl/madsci:latest
+  environment:
+    - USER_ID=${USER_ID:-1000}
+    - GROUP_ID=${GROUP_ID:-1000}
+    # The backing stores, as environment variables. This is how the stack addresses
+    # them; the per-manager *_db_url keys in settings are not the mechanism. Both
+    # point at the simulation infra below, never at whatever sits on the default ports.
+    - DOCUMENT_DB_URL=mongodb://madsci:madsci@localhost:27117/
+    - RESOURCE_DB_URL=postgresql://madsci:madsci@localhost:5634/resources_sim
+    - WORKCELL_REDIS_PORT=6479
+  network_mode: host
+  volumes:
+    - ..:/home/madsci/rapid446_sdl:Z
+    # The seal. MADSci finds its config by walking up for settings.yaml, and there is
+    # no environment variable that redirects it, so the simulation settings are mounted
+    # OVER that name. Inside these containers the real settings.yaml does not exist.
+    # An earlier version set MADSCI_SETTINGS_FILE instead, which MADSci ignores: every
+    # manager read the real file and tried to bind a lab address.
+    - ../settings.simulation.yaml:/home/madsci/rapid446_sdl/settings.yaml:ro
+    - ../.madsci_sim:/home/madsci/.madsci:Z
+  working_dir: /home/madsci/rapid446_sdl
+  restart: unless-stopped
+
+services:
+  # ---------------- infra ----------------
+  sim_postgres:
+    container_name: rapid446sim_postgres
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=madsci
+      - POSTGRES_PASSWORD=madsci
+      - POSTGRES_DB=resources_sim
+    ports:
+      - "5634:5432"
+    restart: unless-stopped
+
+  sim_documentdb:
+    container_name: rapid446sim_documentdb
+    image: ghcr.io/ferretdb/postgres-documentdb-dev:17-ferretdb
+    environment:
+      - POSTGRES_USER=madsci
+      - POSTGRES_PASSWORD=madsci
+      - POSTGRES_DB=postgres
+    ports:
+      - "5633:5432"
+    restart: unless-stopped
+
+  sim_ferretdb:
+    container_name: rapid446sim_ferretdb
+    image: ghcr.io/ferretdb/ferretdb:2
+    environment:
+      - FERRETDB_POSTGRESQL_URL=postgres://madsci:madsci@localhost:5633/postgres
+      # 27017 belongs to whatever MADSci stack is already on this machine.
+      - FERRETDB_LISTEN_ADDR=:27117
+      - FERRETDB_DEBUG_ADDR=:8188
+    network_mode: host
+    depends_on:
+      - sim_documentdb
+    restart: unless-stopped
+
+  sim_valkey:
+    container_name: rapid446sim_valkey
+    image: valkey/valkey:8
+    command: valkey-server --port 6479
+    network_mode: host
+    restart: unless-stopped
+
+  # ---------------- managers ----------------
+  sim_event_manager:
+    <<: *sim-service
+    container_name: rapid446sim_event_manager
+    command: python -m madsci.event_manager.event_server
+    depends_on: [sim_ferretdb]
+
+  sim_lab_manager:
+    <<: *sim-service
+    container_name: rapid446sim_lab_manager
+    image: ghcr.io/ad-sdl/madsci_dashboard:latest
+    command: python -m madsci.squid.lab_server
+    depends_on: [sim_event_manager]
+
+  sim_experiment_manager:
+    <<: *sim-service
+    container_name: rapid446sim_experiment_manager
+    command: python -m madsci.experiment_manager.experiment_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_data_manager:
+    <<: *sim-service
+    container_name: rapid446sim_data_manager
+    command: python -m madsci.data_manager.data_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_resource_manager:
+    <<: *sim-service
+    container_name: rapid446sim_resource_manager
+    command: python -m madsci.resource_manager.resource_server
+    depends_on: [sim_postgres, sim_event_manager]
+
+  sim_location_manager:
+    <<: *sim-service
+    container_name: rapid446sim_location_manager
+    command: python -m madsci.location_manager.location_server
+    depends_on: [sim_ferretdb, sim_event_manager]
+
+  sim_workcell_manager:
+    <<: *sim-service
+    container_name: rapid446sim_workcell_manager
+    command: python -m madsci.workcell_manager.workcell_server
+    depends_on:
+      - sim_resource_manager
+      - sim_location_manager
+      - sim_data_manager
+      - sim_experiment_manager
+
+  # ---------------- nodes ----------------
+  # Only pf400_module ships a Dockerfile and a real simulation mode today, so it is the
+  # only node here. The rest are listed in settings.simulation.yaml and the workcell
+  # manager will report them unreachable until they are added.
+  #
+  # To add one: it needs a Dockerfile, and it needs either its own simulation flag or an
+  # accepted startup failure. A node without a device still publishes its resource
+  # templates and its intrinsic locations before it reaches for hardware, which is most
+  # of what the site description needs, so an accepted failure is genuinely useful.
+  # Checked in source: inheco, sealer and biometra all publish first. bmg does not, it
+  # probes its sidecar and creates nothing if that is down.
+  #
+  # Until then those nodes can be run from source against this stack:
+  #   RESOURCE_SERVER_URL=http://localhost:9004 LOCATION_SERVER_URL=http://localhost:9006 \
+  #   NODE_NAME=inheco_iris_2.1 NODE_URL=http://0.0.0.0:2111 \
+  #   python -m inheco_incubator_rest_node
+
+  sim_pf400_piper:
+    container_name: rapid446sim_pf400_piper
+    image: ghcr.io/ad-sdl/pf400_module:latest
+    network_mode: host
+    environment:
+      - USER_ID=${USER_ID:-1000}
+      - GROUP_ID=${GROUP_ID:-1000}
+      - MADSCI_SETTINGS_DIR=/home/madsci/nodes_sim/pf400_piper
+      - RESOURCE_SERVER_URL=http://localhost:9004/
+      - LOCATION_SERVER_URL=http://localhost:9006/
+      - EVENT_SERVER_URL=http://localhost:9001/
+      - NODE_SIMULATION=true
+    volumes:
+      - ../nodes_sim:/home/madsci/nodes_sim:Z
+      - ../.madsci_sim:/home/madsci/.madsci:Z
+    depends_on:
+      - sim_resource_manager
+      - sim_location_manager
+    restart: unless-stopped

@@ -323,3 +323,7 @@ coverage.xml
 .coverage
 
 .mcp.json
+
+# Runtime registry written by the simulation stack
+.madsci_sim/*
+!.madsci_sim/.gitkeep
