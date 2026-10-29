@@ -13,7 +13,7 @@ name: rapid446_simulation
 #
 # WHAT IS DIFFERENT FROM THE REAL LAB
 #   managers   ports 9000-9006 instead of 8000-8006, and every database name ends _sim
-#   infra      ports 5533/5534/27117/6479 instead of 5432/5434/27017/6379
+#   infra      ports 5633/5634/27117/6479 instead of 5432/5434/27017/6379
 #   nodes      localhost 2101-2112, never a lab address
 #   settings   settings.simulation.yaml, never settings.yaml
 #
